@@ -2,6 +2,7 @@ body {
     display: absolute; 
     position: relative; 
     background-color: black; 
+    background-size: 100%;
   
 }
 
@@ -10,4 +11,38 @@ body {
     position: flex;
     width: 100%; 
     height: 100%; 
+}
+
+#boardGrid { 
+    
+}
+
+#playerDrawnCards { 
+    display: absolute; 
+    position: absolute;
+    background-color: blue; 
+    size: 10%; 
+    top: 25px; 
+    float: right; 
+    clear: right; 
+    right: 250px; 
+    width: 5px; 
+    height: 5px; 
+  
+}
+#computerDrawnCards { 
+    display: absolute; 
+    position: absolute; 
+    background-color: blue; 
+    size: 10%; 
+    top: 25px; 
+    float: left; 
+    clear: left; 
+    left: 150px; 
+    width: 5px; 
+    height: 5px; 
+}
+
+#cardImages { 
+    visibility: hidden; 
 }
