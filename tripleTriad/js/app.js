@@ -1,28 +1,22 @@
 
 // CARD OBJECT CLASS 
 class TriadCard { 
-    constructor(name, colorVal, topVal, bottomVal, leftVal, rightVal){
+    constructor(name, colorVal, topVal, bottomVal, leftVal, rightVal, cardImg){
         this.name = name;
         this.color = colorVal;          
         this.topVal = topVal; 
         this.bottomVal = bottomVal; 
         this.leftVal = leftVal;
         this.rightVal = rightVal; 
+        this.image = cardImg;
       } 
     }     
-
-
-const gameBoard = [null, null, null, 
-                   null, null, null, 
-                   null, null, null
-                ]
-console.log(gameBoard);
 
 const A = 10
 
 // LEVEL 1 MONSTER CARDS
 // name, colorVal, top, bottom, left, right
-const geezard = new TriadCard('Geezard', null, 1, 1, 5, 4)
+const geezard = new TriadCard('Geezard', null, 1, 1, 5, 4,)
 const funguar = new TriadCard('Funguar', null, 5, 1, 3, 1)
 const biteBug = new TriadCard('Bite Bug', null, 5, 3, 1, 3)
 const redBat = new TriadCard('Red bat', null, 6, 1, 2, 1)
@@ -165,7 +159,8 @@ const squall = new TriadCard('Squall', null, A, 6, 9, 4)
 
 
 
-const cardList = [{geezard},{funguar},{biteBug},{redBat},{blobra},
+const deck = [
+                  {geezard},{funguar},{biteBug},{redBat},{blobra},
                   {gayla}, {gesper}, {fasticalonF},{bloodSoul},{caterchi}, {cocka},
                   {grat}, {buel}, {mesmer}, {glaceye}, {belhel}, {thrust}, {anacond},
                   {creep}, {mantis}, {jelly}, {grend}, {forbid}, {armad}, {triface},
@@ -183,16 +178,15 @@ const cardList = [{geezard},{funguar},{biteBug},{redBat},{blobra},
                   {edea}, {seifer}, {squall}
                 ]
 
-console.log(cardList)
-console.log(geezard);
+console.log(deck)
 
-// gameBoard.splice(0,0, odin)
-console.log(gameBoard);
+
+
 
 function randomizeDeck(array) {
     let cardIndex = array.length;
     while (0 !== --cardIndex) { // so long as we haven't depleted the cards to "0", we continue to reduce cards from the array of objects
-      let randomIndex = Math.floor(Math.random() * cardIndex); // randomizes the array order 
+      let randomIndex = Math.floor(Math.random() * cardIndex); // randomizes the array order of the entire deck
       [array[cardIndex], array[randomIndex]] = [array[randomIndex],  array[cardIndex]]; 
       // as cardIndex depletes in the while loop, they will be mutated into the random index 
       // and vice versa 
@@ -203,24 +197,91 @@ function randomizeDeck(array) {
 }
 
 const draw = (numOfCards) => {
-    return Array.from({length:numOfCards}, () => cardList.pop())
+    return Array.from({length:numOfCards}, () => deck.pop())
 }
     
 // randomizing the deck 
-    randomizeDeck(cardList)
-    console.log("deck length: ", cardList.length)
+    randomizeDeck(deck)
+    console.log("deck length: ", deck.length)
     
 const players = {
-        playerName: "Player",
+        player: "Player",
         playerCards: draw(5),
         playerHand: [],
         playerScore: 5,
+        playerLevel: 0,
 
       
-        aiName: "Computer",
+        computer: "Computer",
         aiCards: draw(5),
         aiHand: [],
         aiScore: 5, 
+        aiLevel: 0
 }    
 
 console.log(players.playerCards)
+console.log(players.playerHand)
+console.log(players.aiCards)
+console.log("deck length: ", deck.length)
+
+
+// game object 
+// build the game board ... 3x3 'card tiles' 
+const boardGrid = ["", "", null, 
+                   null, null, null, 
+                   null, null, null]
+                   boardGrid.splice(0,1,players.playerCards[0]) 
+
+// linking boardGrid array, which can be passed card object data
+// into the div as an element? that can be viewed in the DOM 
+const $row1Col1 = $('#row1_Col1').append(boardGrid[0])
+const $row1Col2 = $('#row1_Col2').append(boardGrid[1])
+const $row1Col3 = $('#row1_Col3').append(boardGrid[2])
+const $row2Col1 = $('#row2_Col1').append(boardGrid[3])
+const $row2Col2 = $('#row2_Col2').append(boardGrid[4])
+const $row2Col3 = $('#row2_Col3').append(boardGrid[5])
+const $row3Col1 = $('#row3_Col1').append(boardGrid[6])
+const $row3Col2 = $('#row3_Col2').append(boardGrid[7])
+const $row3Col3 = $('#row3_Col3').append(boardGrid[8])
+
+// console.log($('#row1_Col1'), "has boarGrid value udpated the html div")
+// console.log($('#boardGrid'), 'checking to see if board grid is updating with array data')
+
+boardGrid.splice(0,1,players.playerCards[0]) // player card is played into array and div row1col1
+boardGrid.splice(1,1,players.aiCards[0]) // computer card is played in boardGrid slot 1/ aka row1col2
+console.log(boardGrid, "has boardGrid received new card? ");
+
+console.log($('#row1_Col1'), "has card passed into the div from player's hand")
+console.log($('#boardGrid'))
+
+console.log(boardGrid[0].rightVal)
+console.log(boardGrid[0].children(name))
+// testing a card battle... 
+// const testBattle = () => {
+// if (boardGrid[0].rightVal> boardGrid[1][0].leftVal) { 
+//     console.log ("Player card wins - comp card turns blue")
+// } else { 
+//     console.log("Comp card wins - player card turns red")
+// }
+// }
+// testBattle()
+
+
+
+
+
+
+// store these in an array to later be called upon during game turns
+// to push/splice a card into the position 
+// should include creation of the game board 
+    // game board positions (columns & rows?)
+    // 
+    // e.g. check for cards, check sides of touching cards
+
+// should include the player object 
+// logic and computer logic     
+// should randomly decide first turn
+// should allow player turn to:     
+    // to choose a card from player hand
+    // should allow 'chosen card' to be '' onto the game board 
+// 
