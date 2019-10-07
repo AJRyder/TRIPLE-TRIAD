@@ -1,0 +1,13 @@
+body { 
+    display: absolute; 
+    position: relative; 
+    background-color: black; 
+  
+}
+
+#gameContainer { 
+    display: relative; 
+    position: flex;
+    width: 100%; 
+    height: 100%; 
+}
