@@ -22,20 +22,19 @@ img {
 #boardGrid { 
     display: grid; 
     grid-template-columns: auto auto auto;
+    opacity: 5%; 
+    grid-gap: 5px; 
     position: relative; 
     color: grey; 
-    background-color: grey;
     height: 650px; 
-    width: 630px; 
-    left: 325px; 
+    width: 650px; 
+    left: 318px; 
     bottom: 680px; 
 }
 #row1Col1 {
     display: absolute; 
     position: relative; 
     float: right; 
-    color: grey; 
-    background-color: grey;
     height: 100px; 
     width: 100px; 
     left: 500px; 
@@ -346,3 +345,6 @@ h1 {
     
 
 
+.boardTiles > #playerChosenCard {
+    position: inherit;
+}

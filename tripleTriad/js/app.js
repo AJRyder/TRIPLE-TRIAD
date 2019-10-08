@@ -182,9 +182,9 @@ const players = {
 const game = {
     //     // GAME BOARD        
     board: [
-            [null, null, null], 
-            [null, null, null], 
-            [null, null, null]
+            "", "", "", 
+            "", "", "", 
+            "", "", ""
             ],
 
     deck: [
@@ -228,7 +228,6 @@ const game = {
         return playerCards
     },
         selectBoardTile(){
-            game.board = [];
             let $board = $('#boardGrid')
             let choices = $board.find('div')
             console.log(choices);
@@ -430,15 +429,124 @@ const game = {
     });
 
 // EVENT LISTENERS FOR SETTING CARD IN HAND TO BOARD TILES 
-    $('#playerChosenCard').on('click', (e) => {     // when player clicks on chosen card
-        if(players.humanHand.length === 1){         // if player hand is populated by only 1 card
-        game.board[i].splice(0,0, players.humanHand[0]) //splice into selected game board index 
+    const $row1col1 = $('#row1_Col1')
+        $row1col1.on('click', (e) => {     // when player clicks on grid 
+            console.log("grid row1col1 works")
+        if(players.humanHand.length === 1 && game.board[0] === ""){  // if player hand has it's 1 card
+        game.board.splice(0,1, players.humanHand.pop()) //splice into selected game board index 
+            console.log(game.board[0])
+            console.log(players.humanHand)
         // function to manually choose game board tile
-        const playerChosenCard = $('playerChosenCard').detach()
-        $('#row1_Col1')
+        const playerChosenCard = $('#playerChosenCard').detach()
+        playerChosenCard.css("position", "none")
+        $('#row1_Col1').append(playerChosenCard)
+
         }
-    })
-    
+    });
+
+    const $row1col2 = $('#row1_Col2')
+        $row1col2.on('click', (e) => { 
+            console.log('grid row1col2 works')
+            if(players.humanHand.length === 1 && game.board[1] === ""){  // if player hand has it's 1 card
+        game.board.splice(1,1, players.humanHand.pop()) //splice into selected game board index 
+            console.log(game.board[1])
+            console.log(players.humanHand)
+        // function to manually choose game board tile
+        const playerChosenCard = $('#playerChosenCard').detach()
+        $('#row1_Col2').append(playerChosenCard)
+        }
+    });
+
+    const $row1col3 = $('#row1_Col3')
+    $row1col3.on('click', (e) => { 
+        console.log('grid row1col3 works')
+        if(players.humanHand.length === 1 && game.board[2] === ""){  // if player hand has it's 1 card
+    game.board.splice(2,1, players.humanHand.pop()) //splice into selected game board index 
+        console.log(game.board[2])
+        console.log(players.humanHand)
+    // function to manually choose game board tile
+    const playerChosenCard = $('#playerChosenCard').detach()
+
+    $('#row1_Col3').append(playerChosenCard)
+    }
+});
+
+    const $row2col1 = $('#row2_Col1')
+    $row2col1.on('click', (e) => { 
+        console.log('grid row2col1 works')
+        if(players.humanHand.length === 1 && game.board[3] === ""){  // if player hand has it's 1 card
+    game.board.splice(3,1, players.humanHand.pop()) //splice into selected game board index 
+    console.log(game.board[3])
+    console.log(players.humanHand)
+    // function to manually choose game board tile
+    const playerChosenCard = $('#playerChosenCard').detach()
+    $('#row2_Col1').append(playerChosenCard)
+    }
+});
+
+    const $row2col2 = $('#row2_Col2')
+    $row2col2.on('click', (e) => { 
+        console.log('grid row2col2 works')
+    if(players.humanHand.length === 1 && game.board[4] === ""){  // if player hand has it's 1 card
+    game.board.splice(4,1, players.humanHand.pop()) //splice into selected game board index 
+        console.log(game.board[3])
+        console.log(players.humanHand)
+// function to manually choose game board tile
+    const playerChosenCard = $('#playerChosenCard').detach()
+    $('#row2_Col2').append(playerChosenCard)
+    }
+});
+
+    const $row2col3 = $('#row2_Col3')
+    $row2col3.on('click', (e) => { 
+        console.log('grid row2col3 works')
+    if(players.humanHand.length === 1 && game.board[5] === ""){  // if player hand has it's 1 card
+    game.board.splice(5,1, players.humanHand.pop()) //splice into selected game board index 
+        console.log(game.board[5])
+        console.log(players.humanHand)
+// function to manually choose game board tile
+    const playerChosenCard = $('#playerChosenCard').detach()
+    $('#row2_Col3').append(playerChosenCard)
+    }
+});
+    const $row3col1 = $('#row3_Col1')
+    $row3col1.on('click', (e) => { 
+        console.log('grid row3col1 works')
+    if(players.humanHand.length === 1 && game.board[6] === ""){  // if player hand has it's 1 card
+    game.board.splice(6,1, players.humanHand.pop()) //splice into selected game board index 
+        console.log(game.board[6])
+        console.log(players.humanHand)
+// function to manually choose game board tile
+    const playerChosenCard = $('#playerChosenCard').detach()
+    $('#row3_Col1').append(playerChosenCard)
+    }
+});
+
+    const $row3col2 = $('#row3_Col2')
+    $row3col2.on('click', (e) => { 
+        console.log('grid row3col1 works')
+    if(players.humanHand.length === 1 && game.board[7] === ""){  // if player hand has it's 1 card
+    game.board.splice(7,1, players.humanHand.pop()) //splice into selected game board index 
+        console.log(game.board[7])
+        console.log(players.humanHand)
+// function to manually choose game board tile
+    const playerChosenCard = $('#playerChosenCard').detach()
+    $('#row3_Col2').append(playerChosenCard)
+}
+});
+
+const $row3col3 = $('#row3_Col3')
+$row3col3.on('click', (e) => { 
+    console.log('grid row3col1 works')
+if(players.humanHand.length === 1 && game.board[8] === ""){  // if player hand has it's 1 card
+game.board.splice(8,1, players.humanHand.pop()) //splice into selected game board index 
+    console.log(game.board[8])
+    console.log(players.humanHand)
+// function to manually choose game board tile
+const playerChosenCard = $('#playerChosenCard').detach()
+$('#row3_Col3').append(playerChosenCard)
+}
+});
 
     
 
