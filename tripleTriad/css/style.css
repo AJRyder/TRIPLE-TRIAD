@@ -14,35 +14,287 @@ body {
 }
 
 #boardGrid { 
-    
+
 }
 
 #playerDrawnCards { 
     display: absolute; 
-    position: absolute;
-    background-color: blue; 
+    position: relative;
     size: 10%; 
-    top: 25px; 
     float: right; 
-    clear: right; 
-    right: 250px; 
-    width: 5px; 
-    height: 5px; 
+    bottom: 700px;
+    right: 500px; 
+    height: auto; 
   
+}
+
+.playerCards {
+    background-size: fill;
+    height: auto;
+    width: 250px;
+    background-color: mediumturquoise;
+    font-family: fantasy; 
+    font-weight: 2;
+    color: whitesmoke;
 }
 #computerDrawnCards { 
     display: absolute; 
-    position: absolute; 
-    background-color: blue; 
-    size: 10%; 
-    top: 25px; 
-    float: left; 
-    clear: left; 
-    left: 150px; 
-    width: 5px; 
-    height: 5px; 
+    position: relative; 
+    bottom: 700px; 
+    left: 20px; 
+    height: auto;
+  
+}
+.compCards {
+    background-size: fill;
+    height: auto;
+    width: 250px;
+    background-color: mediumturquoise;
+    font-family: fantasy; 
+    font-weight: 2;
+    color: whitesmoke;
 }
 
 #cardImages { 
     visibility: hidden; 
 }
+/* CARD 1 NUMBERS */
+.playerCardOneTop{
+    position: relative; 
+    margin: auto; 
+    top: 10px;
+    left: 30px; 
+}
+.playerCardOneBottom{
+    position: relative; 
+    left: 30px; 
+}
+.playerCardOneRight {
+    position: relative; 
+    bottom: 170px; 
+    left: 45px;
+}    
+.playerCardOneLeft {
+    position: relative;
+    bottom: 98px; 
+    left: 15px; 
+}
+
+/* CARD 2 NUMBERS  */
+.playerTopNumCard2 {
+    position: relative; 
+    margin: auto; 
+    top: 10px;
+    left: 30px;
+}
+.playerBottomNumCard2 {
+    position: relative; 
+    left: 30px; 
+}
+
+.playerLeftNumCard2 {
+    position: relative;
+    bottom: 98px; 
+    left: 15px; 
+}
+.playerRightNumCard2 {
+    position: relative; 
+    bottom: 170px; 
+    left: 45px;
+}
+/* CARD 3 NUMBERS */
+.playerTopNumCard3 {
+    position: relative; 
+    margin: auto; 
+    top: 10px;
+    left: 30px;
+}
+.playerBottomNumCard3 {
+    position: relative; 
+    left: 30px; 
+}
+
+.playerLeftNumCard3 {
+    position: relative;
+    bottom: 98px; 
+    left: 15px; 
+}
+.playerRightNumCard3 {
+    position: relative; 
+    bottom: 170px; 
+    left: 45px;
+}
+
+/* CARD 4 NUMBERS  */
+.playerTopNumCard4 {
+    position: relative; 
+    margin: auto; 
+    top: 10px;
+    left: 30px;
+}
+.playerBottomNumCard4 {
+    position: relative; 
+    left: 30px; 
+}
+
+.playerLeftNumCard4 {
+    position: relative;
+    bottom: 98px; 
+    left: 15px; 
+}
+.playerRightNumCard4 {
+    position: relative; 
+    bottom: 170px; 
+    left: 45px;
+}
+
+/* CARD 5 Numbers */
+.playerTopNumCard5 {
+    position: relative; 
+    margin: auto; 
+    top: 10px;
+    left: 30px;
+}
+.playerBottomNumCard5 {
+    position: relative; 
+    left: 30px; 
+}
+
+.playerLeftNumCard5 {
+    position: relative;
+    bottom: 98px; 
+    left: 15px; 
+}
+.playerRightNumCard5 {
+    position: relative; 
+    bottom: 170px; 
+    left: 45px;
+}
+
+.compCards {
+    background-size: fill; 
+    height: 250px; 
+    width: 250px;
+    background-color:palevioletred; 
+    font-family: fantasy; 
+    font-weight: 2;
+    color: black;
+} 
+/* COMPUTER CARD 1 NUMBERS */
+.compTopNum {
+    position: relative; 
+    margin: auto; 
+    top: 10px;
+    left: 30px; 
+}
+.compBottomNum {
+    position: relative; 
+    left: 30px; 
+}
+.compLeftNum {
+    position: relative;
+    bottom: 98px; 
+    left: 15px; 
+}
+.compRightNum {
+    position: relative; 
+    bottom: 220px; 
+    left: 45px;
+}
+/* computer Card 2 Numbers */
+.compTopNumCard2 {
+    position: relative; 
+    margin: auto; 
+    top: 10px;
+    left: 30px; 
+}
+.compBottomNumCard2 {
+    position: relative; 
+    left: 30px; 
+}
+.compLeftNumCard2 {
+    position: relative;
+    bottom: 98px; 
+    left: 15px; 
+}
+.compRightNumCard2 {
+    position: relative; 
+    bottom: 170px; 
+    left: 45px;
+}
+/* computer card 3 numbers */
+.compTopNumCard3 {
+    position: relative; 
+    margin: auto; 
+    top: 10px;
+    left: 30px; 
+}
+.compBottomNumCard3 {
+    position: relative; 
+    left: 30px; 
+}
+.compLeftNumCard3 {
+    position: relative;
+    bottom: 98px; 
+    left: 15px; 
+}
+.compRightNumCard3 {
+    position: relative; 
+    bottom: 170px; 
+    left: 45px;
+}
+/* computer card 4 numbers */
+.compTopNumCard4 {
+    position: relative; 
+    margin: auto; 
+    top: 10px;
+    left: 30px; 
+}
+.compBottomNumCard4 {
+    position: relative; 
+    left: 30px; 
+}
+.compLeftNumCard4 {
+    position: relative;
+    bottom: 98px; 
+    left: 15px; 
+}
+.compRightNumCard4 {
+    position: relative; 
+    bottom: 170px; 
+    left: 45px;
+}
+
+/* computer card 5 numbers */
+.compTopNumCard5 {
+    position: relative; 
+    margin: auto; 
+    top: 10px;
+    left: 30px; 
+}
+.compBottomNumCard5 {
+    position: relative; 
+    left: 30px; 
+}
+.compLeftNumCard5 {
+    position: relative;
+    bottom: 98px; 
+    left: 15px; 
+}
+.compRightNumCard5 {
+    position: relative; 
+    bottom: 170px; 
+    left: 45px;
+}
+h1 {
+    -webkit-text-stroke: 1px white; 
+    color: black;
+    text-shadow: 3px 3px 0 #000, 
+                 -1px -1px 0 #000, 
+                 1px -1px 0 #000,
+                 -1px 1px 0 #000,
+                 1px 1px 0 #000;
+}    
+    
+
+
