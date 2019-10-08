@@ -227,16 +227,32 @@ const game = {
         }
         return playerCards
     },
+        selectBoardTile(){
+            game.board = [];
+            let $board = $('#boardGrid')
+            let choices = $board.find('div')
+            console.log(choices);
+            while(game.board[i] === null) { // while game board index (game.board[i]) equals null
+                //cards can be placed 
+                game.board[i].splice(i, 0, playerChosenCard) || game.board[i].splice(i, 0, compChosenCard)
+            }
+        },
+        // compareCards(){
+        //     // if card is placed in a particular array
+        //     // compare neighboring sides 
+        //         // is there a card(s) in those neighboring sides
+        //     // if side of card on playing hand is greater than neighboring card
+        // },
         // how can my player interact with their cards? 
         // cards should display.... in the dom 
-        cardRender() {
+        cardRender(){
             //PLAYER CARD ONE
             $('#playerCardOne').css('background-image', `url(${players.humanCards[0].image})`)
                 $('.playerCardOneTop').append(players.humanCards[0].topVal)
                 $('.playerCardOneBottom').append(players.humanCards[0].bottomVal)
                 $('.playerCardOneLeft').append(players.humanCards[0].leftVal)
                 $('.playerCardOneRight').append(players.humanCards[0].rightVal)
-
+                
             //PLAYER CARD TWO 
             $('#playerCardTwo').css('background-image', `url(${players.humanCards[1].image})`)
                 $('.playerTopNumCard2').append(players.humanCards[1].topVal)
@@ -261,43 +277,170 @@ const game = {
                 $('.playerBottomNumCard5').append(players.humanCards[4].bottomVal)
                 $('.playerLeftNumCard5').append(players.humanCards[4].leftVal)
                 $('.playerRightNumCard5').append(players.humanCards[4].rightVal)
-            // $('#compCardOne').append(players.compCards[0].image)
+            
+            // COMP CARD ONE 
             $('#compCardOne').css('background-image', `url(${players.compCards[0].image})`)
                 $('.compTopNum').append(players.compCards[0].topVal)
                 $('.compBottomNum').append(players.compCards[0].bottomVal)
                 $('.compLeftNum').append(players.compCards[0].leftVal)
                 $('.compRightNum').append(players.compCards[0].rightVal)
+                // COMP CARD TWO
             $('#compCardTwo').css('background-image', `url(${players.compCards[1].image})`)
                 $('.compTopNumCard2').append(players.compCards[1].topVal)
                 $('.compBottomNumCard2').append(players.compCards[1].bottomVal)
                 $('.compLeftNumCard2').append(players.compCards[1].leftVal)
                 $('.compRightNumCard2').append(players.compCards[1].rightVal)
+                // COMP CARD THREE
             $('#compCardThree').css('background-image', `url(${players.compCards[2].image})`)
                 $('.compTopNumCard3').append(players.compCards[2].topVal)
                 $('.compBottomNumCard3').append(players.compCards[2].bottomVal)
                 $('.compLeftNumCard3').append(players.compCards[2].leftVal)
                 $('.compRightNumCard3').append(players.compCards[2].rightVal)
+                // COMP CARD FOUR 
             $('#compCardFour').css('background-image', `url(${players.compCards[3].image})`)
                 $('.compTopNumCard4').append(players.compCards[3].topVal)
                 $('.compBottomNumCard4').append(players.compCards[3].bottomVal)
                 $('.compLeftNumCard4').append(players.compCards[3].leftVal)
                 $('.compRightNumCard4').append(players.compCards[3].rightVal)
+                // COMP CARD FIVE 
             $('#compCardFive').css('background-image', `url(${players.compCards[4].image})`)
                 $('.compTopNumCard5').append(players.compCards[4].topVal)
                 $('.compBottomNumCard5').append(players.compCards[4].bottomVal)
                 $('.compLeftNumCard5').append(players.compCards[4].leftVal)
                 $('.compRightNumCard5').append(players.compCards[4].rightVal)
-        }
+        }, 
 
+        // ON turn
         //player chooses a card from their hand 
         // chooseCard(){
         //     let playerChoice = 
         //     // how does player access the card? 
         //     // prompt and input? 
         // }
-   
-}
+       
+} // end of GAME OBJECT AND LOGIC 
 
+
+//CARD Clicks to choose card and place into playerHand
+// Event Listeners for CHOOSING PLAYER CARD 
+    //CARD ONE 
+    $('#playerCardOne').on('click', (e) => {
+        if(players.humanHand.length === 0){
+        console.log('player card one works and is in hand')
+        players.humanHand.splice(0,0,players.humanCards[0])
+        const playerCardOne = $('#playerCardOne').detach()
+        console.log(playerCardOne);
+        $('#playerChosenCard').append(playerCardOne)
+        }
+    });
+
+    //CARD TWO
+    $('#playerCardTwo').on('click', (e) => {
+        if(players.humanHand.length === 0){
+        console.log('player card two works and is in hand')
+        players.humanHand.splice(0,0,players.humanCards[1])
+        const playerCardTwo = $('#playerCardTwo').detach()
+        $('#playerChosenCard').append(playerCardTwo)
+        }
+    });
+
+    //CARD THREE
+    $('#playerCardThree').on('click', (e) => {
+        if(players.humanHand.length === 0){
+        console.log('player card three works and is in hand')
+        players.humanHand.splice(0,0,players.humanCards[2])
+        const playerCardThree = $('#playerCardThree').detach()
+        $('#playerChosenCard').append(playerCardThree)
+        }
+    });
+
+    //CARD FOUR
+    $('#playerCardFour').on('click', (e) => {
+        if(players.humanHand.length === 0){
+        console.log('player card four works and is in hand')
+        players.humanHand.splice(0,0,players.humanCards[3])
+        const playerCardFour = $('#playerCardFour').detach()
+        $('#playerChosenCard').append(playerCardFour)
+        }
+    });
+
+    //CARD FIVE
+    $('#playerCardFive').on('click', (e) => {
+        if(players.humanHand.length === 0){
+        console.log('player card five works and is in hand')
+        players.humanHand.splice(0,0,players.humanCards[4])
+        const playerCardFive = $('#playerCardFive').detach()
+        $('#playerChosenCard').append(playerCardFive)
+        }
+    });
+    // if playerHand[].length = 1
+    // do not allow other cards to be clicked from humanCards
+    // we only one want card in hand at a time
+
+    //EVENT LISTENERS FOR CHOOSING COMPUTER CARD 
+
+    //CARD ONE 
+    $('#compCardOne').on('click', (e) => {
+        if(players.compHand.length === 0){
+        console.log('computer card one works')
+        players.compHand.splice(0,0,players.compCards[0])
+        const compCardOne = $('#compCardOne').detach()
+        $('#compChosenCard').append(compCardOne)
+        }
+    });
+
+    //CARD TWO 
+    $('#compCardTwo').on('click', (e) => {
+        if(players.compHand.length === 0){
+            console.log('computer card two works')
+        players.compHand.splice(0,0,players.compCards[1])
+        const compCardTwo = $('#compCardTwo').detach()
+        $('#compChosenCard').append(compCardTwo)
+        }
+    });
+
+    //CARD THREE
+    $('#compCardThree').on('click', (e) => {
+        if(players.compHand.length === 0){
+            console.log('computer card three works')
+        players.compHand.splice(0,0,players.compCards[2])
+        const compCardThree = $('#compCardThree').detach()
+        $('#compChosenCard').append(compCardThree)
+        }
+    });
+
+    //CARD FOUR
+    $('#compCardFour').on('click', (e) => {
+        if(players.compHand.length === 0){
+            console.log('computer card four works')
+        players.compHand.splice(0,0,players.compCards[3])
+        const compCardFour = $('#compCardFour').detach()
+        $('#compChosenCard').append(compCardFour)
+        }
+    });
+
+    //CARD FIVE 
+    $('#compCardFive').on('click', (e) => {
+        if(players.compHand.length === 0){
+            console.log('computer card five works')
+        players.compHand.splice(0,0,players.compCards[4])
+        const compCardFive = $('#compCardFive').detach()
+        $('#compChosenCard').append(compCardFive)
+        }
+    });
+
+// EVENT LISTENERS FOR SETTING CARD IN HAND TO BOARD TILES 
+    $('#playerChosenCard').on('click', (e) => {     // when player clicks on chosen card
+        if(players.humanHand.length === 1){         // if player hand is populated by only 1 card
+        game.board[i].splice(0,0, players.humanHand[0]) //splice into selected game board index 
+        // function to manually choose game board tile
+        const playerChosenCard = $('playerChosenCard').detach()
+        $('#row1_Col1')
+        }
+    })
+    
+
+    
 
 const shuffledDeck = game.randomizeDeck(game.deck)
 console.log(shuffledDeck)

@@ -15,22 +15,24 @@
     <title>Triple Triad</title>
 </head>
 <body>
-        <div id = "gameContainer">
-                <img src = "https://i.ytimg.com/vi/JL7-p17R8Bs/maxresdefault.jpg">
+       
+        <img src = "https://i.ytimg.com/vi/JL7-p17R8Bs/maxresdefault.jpg">
         
-        <div id = 'boardGrid'>
-                <div id = 'row1_Col1'></div>
-                <div id = 'row1_Col2'></div>
-                <div id = 'row1_Col3'></div>
-                <div id = 'row2_Col1'></div>
-                <div id = 'row2_Col2'></div>
-                <div id = 'row2_Col3'></div>
-                <div id = 'row3_Col1'></div>
-                <div id = 'row3_Col2'></div>
-                <div id = 'row3_Col3'></div>
-        </div>
+                <div id = 'boardGrid'>
+                        <div class = "boardTiles" id = 'row1_Col1'></div>
+                        <div class = "boardTiles" id = 'row1_Col2'></div>
+                        <div class = "boardTiles" id = 'row1_Col3'></div>
+                        <div class = "boardTiles" id = 'row2_Col1'></div>
+                        <div class = "boardTiles" id = 'row2_Col2'></div>
+                        <div class = "boardTiles" id = 'row2_Col3'></div>
+                        <div class = "boardTiles" id = 'row3_Col1'></div>
+                        <div class = "boardTiles" id = 'row3_Col2'></div>
+                        <div class = "boardTiles" id = 'row3_Col3'></div>
+                </div>
+        </img>
 
-        <div id = 'playerDrawnCards'>
+        <!-- player Card numbers -->
+        <div id = 'playerDrawnCards'></div>
 
                 <div class = "playerCards" id = 'playerCardOne'>
                                 <div>
@@ -107,7 +109,11 @@
                                 </div>
                 </div>
         </div>
-
+        <!-- Player's Active Hand -->
+        <div id = 'playerChosenCard'></div>
+        <!-- Computer's Active Hand -->
+        <div id = 'compChosenCard'></div>
+        <!-- COMPUTER CARD NUMBERS -->
         <div id = 'computerDrawnCards'>
 
                 <div class = "compCards" id = 'compCardOne'>
