@@ -227,15 +227,7 @@ const game = {
         }
         return playerCards
     },
-        selectBoardTile(){
-            let $board = $('#boardGrid')
-            let choices = $board.find('div')
-            console.log(choices);
-            while(game.board[i] === null) { // while game board index (game.board[i]) equals null
-                //cards can be placed 
-                game.board[i].splice(i, 0, playerChosenCard) || game.board[i].splice(i, 0, compChosenCard)
-            }
-        },
+
         // compareCards(){
         //     // if card is placed in a particular array
         //     // compare neighboring sides 
@@ -308,7 +300,15 @@ const game = {
                 $('.compLeftNumCard5').append(players.compCards[4].leftVal)
                 $('.compRightNumCard5').append(players.compCards[4].rightVal)
         }, 
-
+            // check if cards are in neighboring array 
+            humanTurn (){
+                if(game.board[0] === {} && 
+                  game.board[0].rightVal > game.board[1].leftVal ||
+                  game.board[0].bottomVal > game.board[4].topVal){
+                    humanScore+1
+                    compScore-1
+                }
+            }
         // ON turn
         //player chooses a card from their hand 
         // chooseCard(){

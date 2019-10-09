@@ -17,6 +17,20 @@ img {
     background-size: stretch; 
     flex-grow: inherit;
 }
+#playerScore { 
+    display: absolute; 
+    position: relative;
+    color: mediumturquoise;
+    font-size: 50px; 
+    left: 500px; 
+}
+
+#computerScore { 
+    display: absolute; 
+    position: relative;
+    color: palevioletred;  
+    font-size: 50px; 
+}
 
 /* BOARD ELEMENTS  */
 #boardGrid { 
