@@ -66,7 +66,6 @@ img {
     width: 800px; 
     bottom: 1750px; 
     left: 475px;
-    z-index: 2;
 }
 .boardTiles { 
     flex: 0 0 32%; 
@@ -95,10 +94,10 @@ img {
 }
 
 #computerDrawnCards { 
-    position: absolute; 
-    width: 20%; 
-    height: 20%; 
-    bottom: 2600px;
+    position: absolute;
+    width: 10%; 
+    height: 10%; 
+    bottom: 3000px;
     left: 125px;
 }
 

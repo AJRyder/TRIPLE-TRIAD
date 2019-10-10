@@ -117,7 +117,7 @@ const ultima = new TriadCard('Ultima Weapon', null, 7, 2, 8, 7, "./img/cards/077
 // name, colorVal, top, bottom, left, right
 const chubby = new TriadCard('Chubby Chocobo', null, 4, 8, 9, 4, "./img/cards/078.png")
 const angelo = new TriadCard('Angelo', null, 9, 7, 3, 6, "./img/cards/079.png")
-const gilga = new TriadCard('Gilgamesh', null, 3, 0, 6, 7, "./img/cards/080.png")
+const gilga = new TriadCard('Gilgamesh', null, 3, 10, 6, 7, "./img/cards/080.png")
 const mog = new TriadCard('MiniMog', null, 9, 9, 2, 3, "./img/cards/081.png")
 const chico = new TriadCard('Chicobo', null, 9, 8, 4, 4, "./img/cards/082.png")
 const queza = new TriadCard('Quezacotl', null, 2, 9, 4, 9, "./img/cards/083.png")
@@ -221,65 +221,107 @@ const game = {
         // console.log(this.board[row][col], row, col, 'THIS IS THE SPOT ON THE BOARD')
         const row = parseInt(rowS)
         const col = parseInt(colS)
-        if(this.board[row - 1] && this.board[row - 1][col]) {
+        if(this.board[row - 1] && this.board[row - 1][col] && this.board[row -1][col]) {
             console.log('Check the Top')
             // // checkTop()
-            if(players.humanTurn === 1 && this.board[row][col].topVal > this.board[row][col].bottomVal){
+            if(players.humanTurn === 1 && this.board[row][col].topVal > this.board[row-1][col].bottomVal){
+                if(this.board[row-1][col].color === 'red'){ // if the card being attacked is a comp card "red"
                 console.log("top value is greater than bottom")
                 players.humanScore+=1
                 players.compScore-=1
+                this.board[row-1][col].color === 'blue' // attacked card value is captured and becomes "blue"
+                // change card's bg color to blue with jquery
                 $('#playerScore').text(`${players.humanScore}`)
                 $('#computerScore').text(`${players.compScore}`)
-                
+                }
             } else if(players.compTurn === 1 && this.board[row][col].topVal > this.board[row-1][col].bottomVal){
+                if(this.board[row-1][col].color === 'blue'){ // if the card being attacked is a player card "blue"
                 console.log('the top value is greater than the bottom')
                 players.compScore+=1
                 players.humanScore-=1
+                this.board[row-1][col].color === 'red' // attacked card is captured and becomes 'red' 
+                  // change card's bg color to red with jquery
                 $('#playerScore').text(`${players.humanScore}`)
                 $('#computerScore').text(`${players.compScore}`)
+                }
             }
         }
 
 
-        if(this.board[row] && this.board[row][col+1] && this.board[row][col-1]) {
+        if(this.board[row] && this.board[row][col+1] && this.board[row][col+1]){
             console.log('Check the Right')
-            if(players.humanTurn && this.board[row][col].rightVal > this.board[row][col].leftVal){
+            if(players.humanTurn && this.board[row][col].rightVal > this.board[row][col+1].leftVal){
+                if(this.board[row][col+1].color === 'red'){
                 console.log("right value is greater than left")
                 players.humanScore+=1
                 players.compScore-=1
-            } else if(players.compTurn && this.board[row][col].rightVal > this.board[row][col].leftVal){
+                this.board[row][col+1].color === 'blue'
+                //change card's bg color to blue in jquery
+                $('#playerScore').text(`${players.humanScore}`)
+                $('#computerScore').text(`${players.compScore}`)
+                }
+            } else if(players.compTurn && this.board[row][col].rightVal > this.board[row][col+1].leftVal){
+                if(this.board[row][col+1].color === 'blue'){
                 console.log('the right value is greater than the left')
                 players.humanScore-=1
                 players.compScore+=1
+                this.board[row][col+1].color === 'red'
+                 //change card's bg color to red in jquery
+                $('#playerScore').text(`${players.humanScore}`)
+                $('#computerScore').text(`${players.compScore}`)
+                }
         }
     }
 
 
         if(this.board[row + 1] && this.board[row + 1][col]) {
             console.log('Check the Bottom')
-            if(players.humanTurn && this.board[row][col].bottomVal > this.board[row][col].topVal){
-                console.log("bottom value is greater than top")
+            // if player's turn and card exists in position and there is a card below
+            if(players.humanTurn && this.board[row][col].bottomVal > this.board[row+1][col].topVal){
+                if(this.board[row+1][col].color === 'red'){
+                    console.log("bottom value is greater than top")
                 players.humanScore+=1
                 players.compScore-1
-            } else if(players.compTurn && this.board[row][col].bottomVal > this.board[row][col].topVal){
-                console.log('the bottom value is greater than the top')
+                this.board[row+1][col] === 'blue'
+                 //change card's bg color to blue in jquery
+                $('#playerScore').text(`${players.humanScore}`)
+                $('#computerScore').text(`${players.compScore}`)
+                }
+            } else if(players.compTurn && this.board[row][col].bottomVal > this.board[row+1][col].topVal){
+                if(this.board[row+1][col].color === 'blue'){
+                    console.log('the bottom value is greater than the top')
                 players.humanScore-=1
                 players.compScore+=1
+                this.board[row][col+1].color === 'red'
+                 //change card's bg color to red in jquery
+                $('#playerScore').text(`${players.humanScore}`)
+                $('#computerScore').text(`${players.compScore}`)
+                }
         }
-    }
-
-
+        }
         if(this.board[row] && this.board[row][col-1]) {
             console.log('Check the Left')
             // checkLeft()
-            if(players.humanTurn && this.board[row][col].leftVal > this.board[row][col].rightVal){
+            if(players.humanTurn && this.board[row][col].leftVal > this.board[row][col-1].rightVal){
+                if(this.board[row][col-1].color === 'red'){
                 console.log("left value is greater than right")
                 players.humanScore+=1;
                 players.compScore-=1;
-            } else if(players.compTurn && this.board[row][col].leftVal > this.board[row][col].rightVal){
+                this.board[row][col-1].color === 'blue'
+                 //change card's bg color to blue in jquery
+                $('#playerScore').text(`${players.humanScore}`)
+                $('#computerScore').text(`${players.compScore}`)
+                }
+            } else if(players.compTurn && this.board[row][col].leftVal > this.board[row][col-1].rightVal){
+                if(this.board[row][col-1].color === 'blue'){
                 console.log('the left value is greater than the right')
                 players.humanScore-=1
                 players.compScore+=1
+                this.board[row][col-1].color === 'red'
+                 //change card's bg color to red in jquery
+                $('#playerScore').text(`${players.humanScore}`)
+                $('#computerScore').text(`${players.compScore}`)
+                }
             }
         }
     },
@@ -296,7 +338,6 @@ const game = {
     },
     
          draw(numOfCards){
-        // return Array.from({length:numOfCards}, () => deck.pop())
         let playerCards = []
         for(let i = 0; i < 14; i+=2) {
             players.humanCards.push(game.deck[i])
@@ -317,6 +358,7 @@ const game = {
         render(){
             //PLAYER CARD ONE
             $('#playerCardOne').css('background-image', `url(${players.humanCards[0].image})`)
+                players.humanCards[0].color = "blue"
                 $('.playerCardOneTop').append(players.humanCards[0].topVal)
                 $('.playerCardOneBottom').append(players.humanCards[0].bottomVal)
                 $('.playerCardOneLeft').append(players.humanCards[0].leftVal)
@@ -324,61 +366,79 @@ const game = {
                 
             //PLAYER CARD TWO 
             $('#playerCardTwo').css('background-image', `url(${players.humanCards[1].image})`)
+                players.humanCards[1].color = "blue"
                 $('.playerTopNumCard2').append(players.humanCards[1].topVal)
                 $('.playerBottomNumCard2').append(players.humanCards[1].bottomVal)
                 $('.playerLeftNumCard2').append(players.humanCards[1].leftVal)
                 $('.playerRightNumCard2').append(players.humanCards[1].rightVal)
             //PLAYER CARD THREE
             $('#playerCardThree').css('background-image', `url(${players.humanCards[2].image})`)
-                $('.playerTopNumCard3').append(players.humanCards[2].topVal)
+               players.humanCards[2].color = "blue"
+            $('.playerTopNumCard3').append(players.humanCards[2].topVal)
                 $('.playerBottomNumCard3').append(players.humanCards[2].bottomVal)
                 $('.playerLeftNumCard3').append(players.humanCards[2].leftVal)
                 $('.playerRightNumCard3').append(players.humanCards[2].rightVal)
             //PLAYER CARD FOUR 
             $('#playerCardFour').css('background-image', `url(${players.humanCards[3].image})`)
-                $('.playerTopNumCard4').append(players.humanCards[3].topVal)
+                players.humanCards[3].color = "blue"
+            $('.playerTopNumCard4').append(players.humanCards[3].topVal)
                 $('.playerBottomNumCard4').append(players.humanCards[3].bottomVal)
                 $('.playerLeftNumCard4').append(players.humanCards[3].leftVal)
                 $('.playerRightNumCard4').append(players.humanCards[3].rightVal)
             //PLAYER CARD FIVE 
             $('#playerCardFive').css('background-image', `url(${players.humanCards[4].image})`)
-                $('.playerTopNumCard5').append(players.humanCards[4].topVal)
+                players.humanCards[4].color = "blue"
+            $('.playerTopNumCard5').append(players.humanCards[4].topVal)
                 $('.playerBottomNumCard5').append(players.humanCards[4].bottomVal)
                 $('.playerLeftNumCard5').append(players.humanCards[4].leftVal)
                 $('.playerRightNumCard5').append(players.humanCards[4].rightVal)
             
             // COMP CARD ONE 
             $('#compCardOne').css('background-image', `url(${players.compCards[0].image})`)
+                players.compCards[0].color = "red"
                 $('.compTopNum').append(players.compCards[0].topVal)
                 $('.compBottomNum').append(players.compCards[0].bottomVal)
                 $('.compLeftNum').append(players.compCards[0].leftVal)
                 $('.compRightNum').append(players.compCards[0].rightVal)
                 // COMP CARD TWO
             $('#compCardTwo').css('background-image', `url(${players.compCards[1].image})`)
+                players.compCards[1].color = "red"
                 $('.compTopNumCard2').append(players.compCards[1].topVal)
                 $('.compBottomNumCard2').append(players.compCards[1].bottomVal)
                 $('.compLeftNumCard2').append(players.compCards[1].leftVal)
                 $('.compRightNumCard2').append(players.compCards[1].rightVal)
                 // COMP CARD THREE
             $('#compCardThree').css('background-image', `url(${players.compCards[2].image})`)
+                players.compCards[2].color = "red"
                 $('.compTopNumCard3').append(players.compCards[2].topVal)
                 $('.compBottomNumCard3').append(players.compCards[2].bottomVal)
                 $('.compLeftNumCard3').append(players.compCards[2].leftVal)
                 $('.compRightNumCard3').append(players.compCards[2].rightVal)
                 // COMP CARD FOUR 
             $('#compCardFour').css('background-image', `url(${players.compCards[3].image})`)
+                players.compCards[3].color = "red"
                 $('.compTopNumCard4').append(players.compCards[3].topVal)
                 $('.compBottomNumCard4').append(players.compCards[3].bottomVal)
                 $('.compLeftNumCard4').append(players.compCards[3].leftVal)
                 $('.compRightNumCard4').append(players.compCards[3].rightVal)
                 // COMP CARD FIVE 
             $('#compCardFive').css('background-image', `url(${players.compCards[4].image})`)
+                players.compCards[4].color = "red"
                 $('.compTopNumCard5').append(players.compCards[4].topVal)
                 $('.compBottomNumCard5').append(players.compCards[4].bottomVal)
                 $('.compLeftNumCard5').append(players.compCards[4].leftVal)
                 $('.compRightNumCard5').append(players.compCards[4].rightVal)
         }, 
-        
+        whoWins(){
+            if(players.humanCards.length === 0 && players.humanScore > players.compScore){ 
+                alert("Player has won")
+            } else if(players.humanCards.length === 0 && players.humanScore < players.compScore){
+                alert('computer has won')
+            } else if(players.humanCards.length === 0 && players.humanScore === players.compScore){
+            alert('the game is a tie')          
+        }
+    }      
+       
 }
 // end of GAME OBJECT AND LOGIC 
 
@@ -548,6 +608,7 @@ console.log(players.humanCards)
 console.log(players.compCards)
 game.render();
 game.checkBoard();
+game.whoWins();
 
 
 
