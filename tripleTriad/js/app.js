@@ -174,6 +174,7 @@ const players = {
     compHand: [],
     compScore: 5, 
     compTurn: 0,
+
 }
 
 
@@ -182,7 +183,8 @@ const players = {
 // game object 
 // build the game board ... 3x3 'card tiles' 
 const game = {
-    // Game turns & moves
+    // Game turns to determine winner 
+
 
     //     // GAME BOARD        
     board: [
