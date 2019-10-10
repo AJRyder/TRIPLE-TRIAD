@@ -218,23 +218,65 @@ const game = {
             edea, seifer, squall
     ],
     checkBoard(row, col) {
-        console.log(this.board[row][col], row, col, 'THIS IS THE SPOT ON THE BOARD')
+        // console.log(this.board[row][col], row, col, 'THIS IS THE SPOT ON THE BOARD')
         if(this.board[row - 1] && this.board[row - 1][col]) {
             console.log('Check the Top')
-            // checkTop()
+            // // checkTop()
+            if(players.humanTurn && this.board[row][col].topVal > this.board[row][col].bottomVal){
+                console.log("top value is greater than bottom")
+                players.humanScore+=1
+                
+                players.compScore-=1
+                $('#playerScore').text(`${players.humanScore}`)
+                $('#compScore').text(`${players.compScore}`)
+                
+            } else if(players.compTurn && this.board[row][col].topVal > this.board[row][col].bottomVal){
+                console.log('the top value is greater than the bottom')
+                players.humanScore-=1
+                players.compScore+=1
+                $('#playerScore').text(`${players.humanScore}`)
+                $('#compScore').text(`${players.compScore}`)
+            }
         }
         if(this.board[row][col + 1]) {
             console.log('Check the Right')
-            // checkRight()
+            if(players.humanTurn && this.board[row][col].rightVal > this.board[row][col].leftVal){
+                console.log("right value is greater than left")
+                players.humanScore+=1
+                players.compScore-=1
+            } else if(players.compTurn && this.board[row][col].rightVal > this.board[row][col].leftVal){
+                console.log('the right value is greater than the left')
+                players.humanScore-=1
+                players.compScore+=1
         }
-        if(this.board[row + 1] && this.board[row + 1][col]) {
-            console.log('Check the Bottom')
-            // checkBottom()
-        }
-        if(this.board[row][col - 1]) {
-            console.log('Check the Left')
-            // checkLeft()
-        }
+    }
+    //     if(this.board[row + 1] && this.board[row + 1][col]) {
+    //         console.log('Check the Bottom')
+    //         if(players.humanTurn && this.board[row][col].bottomVal > this.board[row][col].topVal){
+    //             console.log("bottom value is greater than top")
+    //             players.humanScore+=1
+    //             players.compScore-=1
+    //         } else if(players.compTurn && this.board[row][col].bottomVal > this.board[row][col].topVal){
+    //             console.log('the bottom value is greater than the top')
+    //             players.humanScore-=1
+    //             players.compScore+=1
+    //     }
+    // }
+//         if(this.board[row][col - 1]) {
+//             console.log('Check the Left')
+//             // checkLeft()
+//             if(players.humanTurn && this.board[row][col].leftVal > this.board[row][col].rightVal){
+//                 console.log("left value is greater than right")
+//                 players.humanScore+=1
+//                 players.compScore-=1
+//             } else if(players.compTurn && this.board[row][col].leftVal > this.board[row][col].rightVal){
+//                 console.log('the left value is greater than the right')
+//                 players.humanScore-=1
+//                 players.compScore+=1
+//             }
+//         }
+//     }
+// }
     },
     randomizeDeck(array){
         let cardIndex = array.length;
@@ -267,7 +309,7 @@ const game = {
         // },
         // how can my player interact with their cards? 
         // cards should display.... in the dom 
-        cardRender(){
+        render(){
             //PLAYER CARD ONE
             $('#playerCardOne').css('background-image', `url(${players.humanCards[0].image})`)
                 $('.playerCardOneTop').append(players.humanCards[0].topVal)
@@ -450,7 +492,7 @@ const game = {
 $('#boardGrid').on('click', e => {
     let row = $(e.target).attr('row')
     let col = $(e.target).attr('col')
-    if(players.humanTurn && players.humanHand.length){
+    if(players.humanTurn === 1 && players.humanHand.length === 1){
         console.log('human turn and card put down')
         if(!game.board[row][col] ) {
             console.log('human success')
@@ -466,12 +508,12 @@ $('#boardGrid').on('click', e => {
             }).append(card)
             game.board[row].splice(col, 1, players.humanHand.pop())
             game.checkBoard(row, col)
-            players.humanTurn = 0
-            players.compTurn = 1
+            players.humanTurn = 0;
+            players.compTurn = 1;
         } else {
             console.log('THIS SPOT IS TAKEN!!!!')
         }
-    } else if(players.compTurn && players.compHand.length) {
+    } else if(players.compTurn === 1 && players.compHand.length === 1) {
         console.log('comp turn and card put down')
         if(!game.board[row][col]) {
             console.log('comp success')
@@ -482,8 +524,8 @@ $('#boardGrid').on('click', e => {
             }).append(compCard)
             game.board[row].splice(col, 1, players.compHand.pop())
             game.checkBoard(row, col)
-            players.compTurn = 0
-            players.humanTurn = 1
+            players.compTurn = 0;
+            players.humanTurn = 1;
         } else { 
             console.log("THIS SPOT IS TAKEN!!!")
         }
@@ -499,7 +541,8 @@ console.log(shuffledDeck)
 const draw = game.draw()
 console.log(players.humanCards)
 console.log(players.compCards)
-game.cardRender();
+game.render();
+game.checkBoard();
 
 
 

@@ -16,7 +16,7 @@ body {
 img { 
     display: flex; 
     position: relative; 
-    background-size: stretch; 
+    background-size: fill; 
     flex-grow: inherit;
     height: 1100px; 
     width:1300px; 
@@ -24,6 +24,7 @@ img {
 #playerScore { 
     display: absolute; 
     position: relative;
+    opacity: .7;
     color: mediumturquoise;
     -webkit-text-stroke: 1px white; 
     text-shadow: 3px 3px 0 #000, 
@@ -40,6 +41,7 @@ img {
 #computerScore { 
     display: absolute; 
     position: relative;
+    opacity: .7;
     color: palevioletred;
     -webkit-text-stroke: 1px white; 
     text-shadow: 3px 3px 0 #000, 
@@ -112,7 +114,7 @@ img {
 .playerCards {
     background-size: 100%;
     display: block; 
-    height:200px;
+    height: 200px;
     width: 190px;
     background-color: mediumturquoise;
     font-family: fantasy; 
@@ -125,8 +127,9 @@ img {
     position: relative; 
     height: 250px;
     width: 250px;
-    left: 1500px; 
-    bottom: 1200px;
+    left: 1000px; 
+    bottom: 2000px;
+    z-index: 1;
 }
 
 .compCards {
@@ -145,8 +148,9 @@ img {
     position: relative; 
     height: 250px;
     width: 250px; 
-    left: 800px; 
-    bottom: 1100px; 
+    left: 100px; 
+    bottom: 2250px; 
+    z-index: 1;
 }
 
 
