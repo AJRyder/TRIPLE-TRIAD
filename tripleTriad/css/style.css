@@ -143,7 +143,29 @@ img {
     font-family: fantasy; 
     font-weight: 2;
     color: whitesmoke;
-} 
+}
+
+.playerBoardCard {
+    background-size: 100%;
+    display: block; 
+    height: 200px;
+    width: 190px;
+    background-color: mediumturquoise;
+    font-family: fantasy; 
+    font-weight: 2;
+    color: whitesmoke;
+}
+
+.compBoardCard {
+    background-size: 100%;
+    display: block; 
+    height:200px;
+    width: 190px;
+    background-color: palevioletred;
+    font-family: fantasy; 
+    font-weight: 2;
+    color: whitesmoke;
+}
 
 #compChosenCard { 
     background: fill; 
