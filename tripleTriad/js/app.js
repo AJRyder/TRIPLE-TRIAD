@@ -231,11 +231,11 @@ const game = {
                 console.log("top value is greater than bottom")
                 players.humanScore+=1
                 players.compScore-=1
-                this.board[row-1][col].color === 'blue' // attacked card value is captured and becomes "blue"
+              
                 // change card's bg color to blue with jquery
                 let originalClass = $(`div[row=${row-1}]`).filter(`div[col=${col}]`).children().attr('class')
                 $(`div[row=${row-1}]`).filter(`div[col=${col}]`).children().attr('class', `${originalClass}, playerBoardCard`)
-            
+                this.board[row-1][col].color === 'blue' // attacked card value is captured and becomes "blue"
                 $('#playerScore').text(`${players.humanScore}`)
                 $('#computerScore').text(`${players.compScore}`)
                 }
@@ -244,10 +244,10 @@ const game = {
                 console.log('the top value is greater than the bottom')
                 players.compScore+=1
                 players.humanScore-=1
-                this.board[row-1][col].color === 'red' // attacked card is captured and becomes 'red' 
                 let originalClass = $(`div[row=${row-1}]`).filter(`div[col=${col}]`).children().attr('class')
                 $(`div[row=${row-1}]`).filter(`div[col=${col}]`).children().attr('class', `${originalClass}, compBoardCard`)
                   // change card's bg color to red with jquery
+                  this.board[row-1][col].color === 'red' // attacked card is captured and becomes 'red'   
                 $('#playerScore').text(`${players.humanScore}`)
                 $('#computerScore').text(`${players.compScore}`)
                 }
@@ -262,11 +262,11 @@ const game = {
                 console.log("right value is greater than left")
                 players.humanScore+=1
                 players.compScore-=1
-                this.board[row][col+1].color === 'blue'
+              
                 //change card's bg color to blue in jquery
                 let originalClass = $(`div[row=${row}]`).filter(`div[col=${col+1}]`).children().attr('class')
                 $(`div[row=${row}]`).filter(`div[col=${col+1}]`).children().attr('class', `${originalClass}, playerBoardCard`)
-
+                this.board[row][col+1].color === 'blue'
                 $('#playerScore').text(`${players.humanScore}`)
                 $('#computerScore').text(`${players.compScore}`)
                 }
@@ -279,13 +279,12 @@ const game = {
                  //change card's bg color to red in jquery
                  let originalClass = $(`div[row=${row}]`).filter(`div[col=${col+1}]`).children().attr('class')
                  $(`div[row=${row}]`).filter(`div[col=${col+1}]`).children().attr('class', `${originalClass}, compBoardCard`)
+                 this.board[row][col+1].color === 'red'
                 $('#playerScore').text(`${players.humanScore}`)
                 $('#computerScore').text(`${players.compScore}`)
                 }
             }
         }
-
-
         if(this.board[row + 1] && this.board[row + 1][col]) {
             console.log('Check the Bottom')
             // if player's turn and card exists in position and there is a card below
@@ -294,10 +293,10 @@ const game = {
                     console.log("bottom value is greater than top")
                 players.humanScore+=1
                 players.compScore-1
-                this.board[row+1][col] === 'blue'
                  //change card's bg color to blue in jquery
                  let originalClass = $(`div[row=${row+1}]`).filter(`div[col=${col}]`).children().attr('class')
                  $(`div[row=${row+1}]`).filter(`div[col=${col}]`).children().attr('class', `${originalClass}, playerBoardCard`)
+                 this.board[row+1][col] === 'blue'
                 $('#playerScore').text(`${players.humanScore}`)
                 $('#computerScore').text(`${players.compScore}`)
                 }
@@ -306,10 +305,10 @@ const game = {
                     console.log('the bottom value is greater than the top')
                 players.humanScore-=1
                 players.compScore+=1
-                this.board[row][col+1].color === 'red'
                  //change card's bg color to red in jquery
                  let originalClass = $(`div[row=${row+1}]`).filter(`div[col=${col}]`).children().attr('class')
                  $(`div[row=${row+1}]`).filter(`div[col=${col}]`).children().attr('class', `${originalClass}, compBoardCard`)
+                 this.board[row][col+1].color === 'red'
                 $('#playerScore').text(`${players.humanScore}`)
                 $('#computerScore').text(`${players.compScore}`)
                 }
@@ -323,10 +322,10 @@ const game = {
                 console.log("left value is greater than right")
                 players.humanScore+=1;
                 players.compScore-=1;
-                this.board[row][col-1].color === 'blue'
                  //change card's bg color to blue in jquery
                  let originalClass = $(`div[row=${row}]`).filter(`div[col=${col-1}]`).children().attr('class')
                  $(`div[row=${row}]`).filter(`div[col=${col-1}]`).children().attr('class', `${originalClass}, playerBoardCard`)
+                 this.board[row][col-1].color === 'blue'
                 $('#playerScore').text(`${players.humanScore}`)
                 $('#computerScore').text(`${players.compScore}`)
                 }
@@ -335,11 +334,11 @@ const game = {
                 console.log('the left value is greater than the right')
                 players.humanScore-=1
                 players.compScore+=1
-                this.board[row][col-1].color === 'red'
+                
                  //change card's bg color to red in jquery
                  let originalClass = $(`div[row=${row}]`).filter(`div[col=${col-1}]`).children().attr('class')
                  $(`div[row=${row}]`).filter(`div[col=${col-1}]`).children().attr('class', `${originalClass}, compBoardCard`) 
-
+                 this.board[row][col-1].color === 'red'
                 $('#playerScore').text(`${players.humanScore}`)
                 $('#computerScore').text(`${players.compScore}`)
                 }
@@ -620,7 +619,7 @@ console.log(players.humanCards)
 console.log(players.compCards)
 game.render();
 game.checkBoard();
-game.whoWins();
+
 
 
 
@@ -638,63 +637,3 @@ game.whoWins();
 
 
 
-
-// testing a card battle... 
-// const testBattle = () => {
-// if (board[0].rightVal > board[1].leftVal) { 
-//     console.log ("Player card wins - comp card turns blue")
-// } else { 
-//     console.log("Comp card wins - player card turns red")
-// }
-// }
-// testBattle()
-
-// linking boardGrid array to the rowCol divs
-//which can {ideally} be passed card {object data}
-// and later viewed in the DOM 
-// board.splice(0,1,players.playerCards[0]) 
-// const $row1Col1 = $('#row1_Col1').html(`${(board[0].bottomVal)}, ${(board[0].rightVal)}`)
-// const $row1Col2 = $('#row1_Col2').append(board[1])
-// const $row1Col3 = $('#row1_Col3').append(board[2])
-// const $row2Col1 = $('#row2_Col1').append(board[3])
-// const $row2Col2 = $('#row2_Col2').append(board[4])
-// const $row2Col3 = $('#row2_Col3').append(board[5])
-// const $row3Col1 = $('#row3_Col1').append(board[6])
-// const $row3Col2 = $('#row3_Col2').append(board[7])
-// const $row3Col3 = $('#row3_Col3').append(board[8])
-// console.log($('#boardGrid'))
-
-// // console.log($('#row1_Col1'), "has boarGrid value udpated the html div")
-// // console.log($('#boardGrid'), 'checking to see if board grid is updating with array data')
-
-// board.splice(0,1,players.playerCards[0]) // player card is played into board array
-
-// board.splice(1,1,players.compCards[0]) // computer card is played in board array
-// console.log(board, "has board received new card(s)? YES!")
-
-
-// // $row1Col1.html(`<div>${board[0]}</div>`) returns object object in html
-// console.log(players.playerCards[0])
-// console.log($('#row1_Col1'), "has card passed into the div from player's hand?")
-// console.log($('#boardGrid'))
-
-
-
-
-
-
-
-// store these in an array to later be called upon during game turns
-// to push/splice a card into the position 
-// should include creation of the game board 
-    // game board positions (columns & rows?)
-    // 
-    // e.g. check for cards, check sides of touching cards
-
-// should include the player object 
-// logic and computer logic     
-// should randomly decide first turn
-// should allow player turn to:     
-    // to choose a card from player hand
-    // should allow 'chosen card' to be '' onto the game board 
-// 
