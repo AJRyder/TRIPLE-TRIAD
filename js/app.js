@@ -234,7 +234,7 @@ const game = {
                 // change card's bg color to blue with jquery
                 let originalClass = $(`div[row=${row-1}]`).filter(`div[col=${col}]`).children().attr('class')
                 $(`div[row=${row-1}]`).filter(`div[col=${col}]`).children().attr('class', `${originalClass}, playerBoardCard`)
-                this.board[row-1][col].color === 'blue' // attacked card value is captured and becomes "blue"
+                this.board[row-1][col].color = 'blue' // attacked card value is captured and becomes "blue"
                 $('#playerScore').text(`${players.humanScore}`)
                 $('#computerScore').text(`${players.compScore}`)
                 }
@@ -246,7 +246,7 @@ const game = {
                 let originalClass = $(`div[row=${row-1}]`).filter(`div[col=${col}]`).children().attr('class')
                 $(`div[row=${row-1}]`).filter(`div[col=${col}]`).children().attr('class', `${originalClass}, compBoardCard`)
                   // change card's bg color to red with jquery
-                  this.board[row-1][col].color === 'red' // attacked card is captured and becomes 'red'   
+                  this.board[row-1][col].color = 'red' // attacked card is captured and becomes 'red'   
                 $('#playerScore').text(`${players.humanScore}`)
                 $('#computerScore').text(`${players.compScore}`)
                 }
@@ -265,7 +265,7 @@ const game = {
                 //change card's bg color to blue in jquery
                 let originalClass = $(`div[row=${row}]`).filter(`div[col=${col+1}]`).children().attr('class')
                 $(`div[row=${row}]`).filter(`div[col=${col+1}]`).children().attr('class', `${originalClass}, playerBoardCard`)
-                this.board[row][col+1].color === 'blue'
+                this.board[row][col+1].color = 'blue'
                 $('#playerScore').text(`${players.humanScore}`)
                 $('#computerScore').text(`${players.compScore}`)
                 }
@@ -274,11 +274,11 @@ const game = {
                 console.log('the right value is greater than the left')
                 players.humanScore-=1
                 players.compScore+=1
-                this.board[row][col+1].color === 'red'
+                this.board[row][col+1].color = 'red'
                  //change card's bg color to red in jquery
                  let originalClass = $(`div[row=${row}]`).filter(`div[col=${col+1}]`).children().attr('class')
                  $(`div[row=${row}]`).filter(`div[col=${col+1}]`).children().attr('class', `${originalClass}, compBoardCard`)
-                 this.board[row][col+1].color === 'red'
+                 this.board[row][col+1].color = 'red'
                 $('#playerScore').text(`${players.humanScore}`)
                 $('#computerScore').text(`${players.compScore}`)
                 }
@@ -295,7 +295,7 @@ const game = {
                  //change card's bg color to blue in jquery
                  let originalClass = $(`div[row=${row+1}]`).filter(`div[col=${col}]`).children().attr('class')
                  $(`div[row=${row+1}]`).filter(`div[col=${col}]`).children().attr('class', `${originalClass}, playerBoardCard`)
-                 this.board[row+1][col] === 'blue'
+                 this.board[row+1][col] = 'blue'
                 $('#playerScore').text(`${players.humanScore}`)
                 $('#computerScore').text(`${players.compScore}`)
                 }
@@ -307,7 +307,7 @@ const game = {
                  //change card's bg color to red in jquery
                  let originalClass = $(`div[row=${row+1}]`).filter(`div[col=${col}]`).children().attr('class')
                  $(`div[row=${row+1}]`).filter(`div[col=${col}]`).children().attr('class', `${originalClass}, compBoardCard`)
-                 this.board[row][col+1].color === 'red'
+                 this.board[row][col+1].color = 'red'
                 $('#playerScore').text(`${players.humanScore}`)
                 $('#computerScore').text(`${players.compScore}`)
                 }
@@ -324,7 +324,7 @@ const game = {
                  //change card's bg color to blue in jquery
                  let originalClass = $(`div[row=${row}]`).filter(`div[col=${col-1}]`).children().attr('class')
                  $(`div[row=${row}]`).filter(`div[col=${col-1}]`).children().attr('class', `${originalClass}, playerBoardCard`)
-                 this.board[row][col-1].color === 'blue'
+                 this.board[row][col-1].color = 'blue'
                 $('#playerScore').text(`${players.humanScore}`)
                 $('#computerScore').text(`${players.compScore}`)
                 }
@@ -337,7 +337,7 @@ const game = {
                  //change card's bg color to red in jquery
                  let originalClass = $(`div[row=${row}]`).filter(`div[col=${col-1}]`).children().attr('class')
                  $(`div[row=${row}]`).filter(`div[col=${col-1}]`).children().attr('class', `${originalClass}, compBoardCard`) 
-                 this.board[row][col-1].color === 'red'
+                 this.board[row][col-1].color = 'red'
                 $('#playerScore').text(`${players.humanScore}`)
                 $('#computerScore').text(`${players.compScore}`)
                 }
