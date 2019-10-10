@@ -167,11 +167,13 @@ const players = {
     humanCards: [],
     humanHand: [],
     humanScore: 5,
+    humanTurn: 1,
 
     computer: "Computer",
     compCards: [],
     compHand: [],
     compScore: 5, 
+    compTurn: 0,
 }
 
 
@@ -180,12 +182,22 @@ const players = {
 // game object 
 // build the game board ... 3x3 'card tiles' 
 const game = {
+    // Game turns & moves
+
     //     // GAME BOARD        
     board: [
-            "", "", "", 
-            "", "", "", 
-            "", "", ""
+            ["", "", ""], 
+            ["", "", ""], 
+            ["", "", ""]
             ],
+    // board: [
+    //         ["", "x", ""], 
+    //         ["", "?", ""], 
+    //         ["", "", ""]
+    //         ],
+    // this.board[row + 1][col] targets the space below
+    // this.board[row][col - 1] targets the left
+    // this.board[row][col + 1] targets right
 
     deck: [
             geezard, funguar , biteBug, redBat, blobra,
@@ -205,6 +217,25 @@ const game = {
             ward, kiros, lagun, selph, quist, irv, zell, rino,
             edea, seifer, squall
     ],
+    checkBoard(row, col) {
+        console.log(this.board[row][col], row, col, 'THIS IS THE SPOT ON THE BOARD')
+        if(this.board[row - 1] && this.board[row - 1][col]) {
+            console.log('Check the Top')
+            // checkTop()
+        }
+        if(this.board[row][col + 1]) {
+            console.log('Check the Right')
+            // checkRight()
+        }
+        if(this.board[row + 1] && this.board[row + 1][col]) {
+            console.log('Check the Bottom')
+            // checkBottom()
+        }
+        if(this.board[row][col - 1]) {
+            console.log('Check the Left')
+            // checkLeft()
+        }
+    },
     randomizeDeck(array){
         let cardIndex = array.length;
         while (0 !== --cardIndex) { // so long as we haven't depleted the cards to "0", we continue to reduce cards from the array of objects
@@ -300,24 +331,9 @@ const game = {
                 $('.compLeftNumCard5').append(players.compCards[4].leftVal)
                 $('.compRightNumCard5').append(players.compCards[4].rightVal)
         }, 
-            // check if cards are in neighboring array 
-            humanTurn (){
-                if(game.board[0] === {} && 
-                  game.board[0].rightVal > game.board[1].leftVal ||
-                  game.board[0].bottomVal > game.board[4].topVal){
-                    humanScore+1
-                    compScore-1
-                }
-            }
-        // ON turn
-        //player chooses a card from their hand 
-        // chooseCard(){
-        //     let playerChoice = 
-        //     // how does player access the card? 
-        //     // prompt and input? 
-        // }
-       
-} // end of GAME OBJECT AND LOGIC 
+        
+}
+// end of GAME OBJECT AND LOGIC 
 
 
 //CARD Clicks to choose card and place into playerHand
@@ -376,7 +392,7 @@ const game = {
     // do not allow other cards to be clicked from humanCards
     // we only one want card in hand at a time
 
-    //EVENT LISTENERS FOR CHOOSING COMPUTER CARD 
+    //EVENT LISTENERS FOR CHOOSING COMPUTER CARD /player 2
 
     //CARD ONE 
     $('#compCardOne').on('click', (e) => {
@@ -427,126 +443,54 @@ const game = {
         $('#compChosenCard').append(compCardFive)
         }
     });
+// EVENT LISTENER FOR PLACING ONE CARD FROM DRAW INTO HAND 
 
-// EVENT LISTENERS FOR SETTING CARD IN HAND TO BOARD TILES 
-    const $row1col1 = $('#row1_Col1')
-        $row1col1.on('click', (e) => {     // when player clicks on grid 
-            console.log("grid row1col1 works")
-        if(players.humanHand.length === 1 && game.board[0] === ""){  // if player hand has it's 1 card
-        game.board.splice(0,1, players.humanHand.pop()) //splice into selected game board index 
-            console.log(game.board[0])
-            console.log(players.humanHand)
-        // function to manually choose game board tile
-        const playerChosenCard = $('#playerChosenCard').detach()
-        playerChosenCard.css("position", "none")
-        $('#row1_Col1').append(playerChosenCard)
+// EVENT LISTENER FOR PLACING CARDS FROM HAND INTO THE BOARD
 
+$('#boardGrid').on('click', e => {
+    let row = $(e.target).attr('row')
+    let col = $(e.target).attr('col')
+    if(players.humanTurn && players.humanHand.length){
+        console.log('human turn and card put down')
+        if(!game.board[row][col] ) {
+            console.log('human success')
+            const card = $('#playerChosenCard').children().detach() // keeps the player chosen card active but styling is messed up 
+            // $(card).attr({
+            //     'class': 'boardCard',
+            //     'id': ''
+            // })
+            console.log(card)
+            $(e.target).attr({
+                'row': row,
+                'col': col
+            }).append(card)
+            game.board[row].splice(col, 1, players.humanHand.pop())
+            game.checkBoard(row, col)
+            players.humanTurn = 0
+            players.compTurn = 1
+        } else {
+            console.log('THIS SPOT IS TAKEN!!!!')
         }
-    });
-
-    const $row1col2 = $('#row1_Col2')
-        $row1col2.on('click', (e) => { 
-            console.log('grid row1col2 works')
-            if(players.humanHand.length === 1 && game.board[1] === ""){  // if player hand has it's 1 card
-        game.board.splice(1,1, players.humanHand.pop()) //splice into selected game board index 
-            console.log(game.board[1])
-            console.log(players.humanHand)
-        // function to manually choose game board tile
-        const playerChosenCard = $('#playerChosenCard').detach()
-        $('#row1_Col2').append(playerChosenCard)
+    } else if(players.compTurn && players.compHand.length) {
+        console.log('comp turn and card put down')
+        if(!game.board[row][col]) {
+            console.log('comp success')
+            const compCard = $('#compChosenCard').children().detach()
+            $(e.target).attr({
+                'row': row, 
+                'col': col
+            }).append(compCard)
+            game.board[row].splice(col, 1, players.compHand.pop())
+            game.checkBoard(row, col)
+            players.compTurn = 0
+            players.humanTurn = 1
+        } else { 
+            console.log("THIS SPOT IS TAKEN!!!")
         }
-    });
-
-    const $row1col3 = $('#row1_Col3')
-    $row1col3.on('click', (e) => { 
-        console.log('grid row1col3 works')
-        if(players.humanHand.length === 1 && game.board[2] === ""){  // if player hand has it's 1 card
-    game.board.splice(2,1, players.humanHand.pop()) //splice into selected game board index 
-        console.log(game.board[2])
-        console.log(players.humanHand)
-    // function to manually choose game board tile
-    const playerChosenCard = $('#playerChosenCard').detach()
-
-    $('#row1_Col3').append(playerChosenCard)
     }
-});
+})
 
-    const $row2col1 = $('#row2_Col1')
-    $row2col1.on('click', (e) => { 
-        console.log('grid row2col1 works')
-        if(players.humanHand.length === 1 && game.board[3] === ""){  // if player hand has it's 1 card
-    game.board.splice(3,1, players.humanHand.pop()) //splice into selected game board index 
-    console.log(game.board[3])
-    console.log(players.humanHand)
-    // function to manually choose game board tile
-    const playerChosenCard = $('#playerChosenCard').detach()
-    $('#row2_Col1').append(playerChosenCard)
-    }
-});
 
-    const $row2col2 = $('#row2_Col2')
-    $row2col2.on('click', (e) => { 
-        console.log('grid row2col2 works')
-    if(players.humanHand.length === 1 && game.board[4] === ""){  // if player hand has it's 1 card
-    game.board.splice(4,1, players.humanHand.pop()) //splice into selected game board index 
-        console.log(game.board[3])
-        console.log(players.humanHand)
-// function to manually choose game board tile
-    const playerChosenCard = $('#playerChosenCard').detach()
-    $('#row2_Col2').append(playerChosenCard)
-    }
-});
-
-    const $row2col3 = $('#row2_Col3')
-    $row2col3.on('click', (e) => { 
-        console.log('grid row2col3 works')
-    if(players.humanHand.length === 1 && game.board[5] === ""){  // if player hand has it's 1 card
-    game.board.splice(5,1, players.humanHand.pop()) //splice into selected game board index 
-        console.log(game.board[5])
-        console.log(players.humanHand)
-// function to manually choose game board tile
-    const playerChosenCard = $('#playerChosenCard').detach()
-    $('#row2_Col3').append(playerChosenCard)
-    }
-});
-    const $row3col1 = $('#row3_Col1')
-    $row3col1.on('click', (e) => { 
-        console.log('grid row3col1 works')
-    if(players.humanHand.length === 1 && game.board[6] === ""){  // if player hand has it's 1 card
-    game.board.splice(6,1, players.humanHand.pop()) //splice into selected game board index 
-        console.log(game.board[6])
-        console.log(players.humanHand)
-// function to manually choose game board tile
-    const playerChosenCard = $('#playerChosenCard').detach()
-    $('#row3_Col1').append(playerChosenCard)
-    }
-});
-
-    const $row3col2 = $('#row3_Col2')
-    $row3col2.on('click', (e) => { 
-        console.log('grid row3col1 works')
-    if(players.humanHand.length === 1 && game.board[7] === ""){  // if player hand has it's 1 card
-    game.board.splice(7,1, players.humanHand.pop()) //splice into selected game board index 
-        console.log(game.board[7])
-        console.log(players.humanHand)
-// function to manually choose game board tile
-    const playerChosenCard = $('#playerChosenCard').detach()
-    $('#row3_Col2').append(playerChosenCard)
-}
-});
-
-const $row3col3 = $('#row3_Col3')
-$row3col3.on('click', (e) => { 
-    console.log('grid row3col1 works')
-if(players.humanHand.length === 1 && game.board[8] === ""){  // if player hand has it's 1 card
-game.board.splice(8,1, players.humanHand.pop()) //splice into selected game board index 
-    console.log(game.board[8])
-    console.log(players.humanHand)
-// function to manually choose game board tile
-const playerChosenCard = $('#playerChosenCard').detach()
-$('#row3_Col3').append(playerChosenCard)
-}
-});
 
     
 
@@ -555,7 +499,10 @@ console.log(shuffledDeck)
 const draw = game.draw()
 console.log(players.humanCards)
 console.log(players.compCards)
-game.cardRender()
+game.cardRender();
+
+
+
 
     
 

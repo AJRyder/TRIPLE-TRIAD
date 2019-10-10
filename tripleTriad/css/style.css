@@ -2,6 +2,8 @@ body {
     display: absolute; 
     position: relative; 
     background-color: black; 
+    width: 100%;
+    height: 100%; 
     
 }
 
@@ -16,85 +18,137 @@ img {
     position: relative; 
     background-size: stretch; 
     flex-grow: inherit;
+    height: 1100px; 
+    width:1300px; 
 }
 #playerScore { 
     display: absolute; 
     position: relative;
     color: mediumturquoise;
-    font-size: 50px; 
-    left: 500px; 
+    -webkit-text-stroke: 1px white; 
+    text-shadow: 3px 3px 0 #000, 
+                 -1px -1px 0 #000, 
+                 1px -1px 0 #000,
+                 -1px 1px 0 #000,
+                 1px 1px 0 #000;
+    font-size: 150px; 
+    left: 1100px; 
+    bottom: 150px; 
+    z-index: 1;
 }
 
 #computerScore { 
     display: absolute; 
     position: relative;
-    color: palevioletred;  
-    font-size: 50px; 
+    color: palevioletred;
+    -webkit-text-stroke: 1px white; 
+    text-shadow: 3px 3px 0 #000, 
+                 -1px -1px 0 #000, 
+                 1px -1px 0 #000,
+                 -1px 1px 0 #000,
+                 1px 1px 0 #000;
+    font-size: 150px; 
+    left: 100px; 
+    bottom: 320px; 
+    z-index: 1; 
 }
 
 /* BOARD ELEMENTS  */
 #boardGrid { 
-    display: grid; 
-    grid-template-columns: auto auto auto;
-    opacity: 5%; 
-    grid-gap: 5px; 
-    position: relative; 
-    color: grey; 
-    height: 650px; 
-    width: 650px; 
-    left: 318px; 
-    bottom: 680px; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-around;
+    position: relative;
+    height: 950px; 
+    padding:25px; 
+    width: 700px; 
+    bottom: 1400px; 
+    left: 275px;
 }
-#row1Col1 {
-    display: absolute; 
-    position: relative; 
-    float: right; 
-    height: 100px; 
-    width: 100px; 
-    left: 500px; 
+.boardTiles { 
+    flex: 0 0 32%; 
+    margin-bottom: 5px; 
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-#row1Col2{
-    display: absolute; 
-    position: relative; 
-    color:blue; 
-    background-color: grey;
-    height: 100px; 
-    width: 100px; 
-    left: 10px; 
+
+
+.row {
+    width: 100%;
+    height: 33.33%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#playerDrawnCards { 
+    position: absolute;
+    width: 10%; 
+    height: 10%; 
+    bottom: 2600px;
+    left: 1050px; 
+}
+
+#computerDrawnCards { 
+    position: absolute; 
+    width: 10%; 
+    height: 10%; 
+    bottom: 2600px;
+    left: 50px;
 }
 
 /* PLAYER AND COMPUTER ELEMENTS  */
-#playerDrawnCards { 
+#DrawnCards { 
     display: absolute; 
     position: relative;
     size: 10%; 
-    float: right; 
     bottom: 700px;
     right: 500px; 
   
 }
 
 .playerCards {
-    background-size: fill;
+    background-size: 100%;
     display: block; 
-    height: auto;
-    width: 250px;
+    height:200px;
+    width: 190px;
     background-color: mediumturquoise;
     font-family: fantasy; 
     font-weight: 2;
     color: whitesmoke;
 }
 
-.compCards {
-    background-size: fill;
-    height: auto;
+#playerChosenCard { 
+    background: fill;
+    position: relative; 
+    height: 250px;
     width: 250px;
-    bottom: 1300px; 
-    background-color: mediumturquoise;
+    left: 1500px; 
+    bottom: 1200px;
+}
+
+.compCards {
+    background-size: 100%;
+    display: block; 
+    height:200px;
+    width: 190px;
+    background-color: palevioletred;
     font-family: fantasy; 
     font-weight: 2;
     color: whitesmoke;
+} 
+
+#compChosenCard { 
+    background: fill; 
+    position: relative; 
+    height: 250px;
+    width: 250px; 
+    left: 800px; 
+    bottom: 1100px; 
 }
+
 
 #cardImages { 
     visibility: hidden; 
@@ -212,35 +266,8 @@ img {
     left: 45px;
 }
 
-#playerChosenCard { 
-    background: fill;
-    position: relative; 
-    height: 250px;
-    width: 250px;
-    left: 500px; 
-    bottom: 900px;
-}
-
-#compChosenCard { 
-    background: fill; 
-    position: relative; 
-    height: 250px;
-    width: 250px; 
-    left: 800px; 
-    bottom: 1100px; 
-}
 
 
-
-.compCards {
-    background-size: fill; 
-    height: 250px; 
-    width: 250px;
-    background-color:palevioletred; 
-    font-family: fantasy; 
-    font-weight: 2;
-    color: black;
-} 
 /* COMPUTER CARD 1 NUMBERS */
 .compTopNum {
     position: relative; 
@@ -361,4 +388,8 @@ h1 {
 
 .boardTiles > #playerChosenCard {
     position: inherit;
+}
+
+.boardTiles > #compChosenCard { 
+    position: inherit; 
 }
