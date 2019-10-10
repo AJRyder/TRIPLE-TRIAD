@@ -18,8 +18,8 @@ img {
     position: relative; 
     background-size: fill; 
     flex-grow: inherit;
-    height: 1100px; 
-    width:1300px; 
+    height: 1500px; 
+    width: 1800px; 
 }
 #playerScore { 
     display: absolute; 
@@ -33,8 +33,8 @@ img {
                  -1px 1px 0 #000,
                  1px 1px 0 #000;
     font-size: 150px; 
-    left: 1100px; 
-    bottom: 150px; 
+    left: 1550px; 
+    bottom: 175px; 
     z-index: 1;
 }
 
@@ -50,8 +50,8 @@ img {
                  -1px 1px 0 #000,
                  1px 1px 0 #000;
     font-size: 150px; 
-    left: 100px; 
-    bottom: 320px; 
+    left: 150px; 
+    bottom: 350px; 
     z-index: 1; 
 }
 
@@ -61,11 +61,12 @@ img {
     flex-direction: column;
     justify-content: space-around;
     position: relative;
-    height: 950px; 
+    height: 1250px; 
     padding:25px; 
-    width: 700px; 
-    bottom: 1400px; 
-    left: 275px;
+    width: 800px; 
+    bottom: 1750px; 
+    left: 475px;
+    z-index: 2;
 }
 .boardTiles { 
     flex: 0 0 32%; 
@@ -87,25 +88,26 @@ img {
 
 #playerDrawnCards { 
     position: absolute;
-    width: 10%; 
-    height: 10%; 
+    width: 20%; 
+    height: 20%; 
     bottom: 2600px;
-    left: 1050px; 
+    left: 1500px; 
 }
 
 #computerDrawnCards { 
     position: absolute; 
-    width: 10%; 
-    height: 10%; 
+    width: 20%; 
+    height: 20%; 
     bottom: 2600px;
-    left: 50px;
+    left: 125px;
 }
 
 /* PLAYER AND COMPUTER ELEMENTS  */
 #DrawnCards { 
     display: absolute; 
     position: relative;
-    size: 10%; 
+    background-color: aquamarine;
+    size: 20%; 
     bottom: 700px;
     right: 500px; 
   
@@ -125,10 +127,11 @@ img {
 #playerChosenCard { 
     background: fill;
     position: relative; 
-    height: 250px;
-    width: 250px;
-    left: 1000px; 
-    bottom: 2000px;
+    opacity: .75; 
+    height: 200px;
+    width: 180px;
+    left: 1500px; 
+    bottom: 3075px;
     z-index: 1;
 }
 
@@ -146,10 +149,11 @@ img {
 #compChosenCard { 
     background: fill; 
     position: relative; 
+    opacity: .75; 
     height: 250px;
     width: 250px; 
-    left: 100px; 
-    bottom: 2250px; 
+    left: 125px; 
+    bottom: 3300px; 
     z-index: 1;
 }
 

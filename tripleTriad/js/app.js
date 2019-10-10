@@ -217,28 +217,31 @@ const game = {
             ward, kiros, lagun, selph, quist, irv, zell, rino,
             edea, seifer, squall
     ],
-    checkBoard(row, col) {
+    checkBoard(rowS, colS) {
         // console.log(this.board[row][col], row, col, 'THIS IS THE SPOT ON THE BOARD')
+        const row = parseInt(rowS)
+        const col = parseInt(colS)
         if(this.board[row - 1] && this.board[row - 1][col]) {
             console.log('Check the Top')
             // // checkTop()
-            if(players.humanTurn && this.board[row][col].topVal > this.board[row][col].bottomVal){
+            if(players.humanTurn === 1 && this.board[row][col].topVal > this.board[row][col].bottomVal){
                 console.log("top value is greater than bottom")
                 players.humanScore+=1
-                
                 players.compScore-=1
                 $('#playerScore').text(`${players.humanScore}`)
-                $('#compScore').text(`${players.compScore}`)
+                $('#computerScore').text(`${players.compScore}`)
                 
-            } else if(players.compTurn && this.board[row][col].topVal > this.board[row][col].bottomVal){
+            } else if(players.compTurn === 1 && this.board[row][col].topVal > this.board[row-1][col].bottomVal){
                 console.log('the top value is greater than the bottom')
-                players.humanScore-=1
                 players.compScore+=1
+                players.humanScore-=1
                 $('#playerScore').text(`${players.humanScore}`)
-                $('#compScore').text(`${players.compScore}`)
+                $('#computerScore').text(`${players.compScore}`)
             }
         }
-        if(this.board[row][col + 1]) {
+
+
+        if(this.board[row] && this.board[row][col+1] && this.board[row][col-1]) {
             console.log('Check the Right')
             if(players.humanTurn && this.board[row][col].rightVal > this.board[row][col].leftVal){
                 console.log("right value is greater than left")
@@ -250,33 +253,35 @@ const game = {
                 players.compScore+=1
         }
     }
-    //     if(this.board[row + 1] && this.board[row + 1][col]) {
-    //         console.log('Check the Bottom')
-    //         if(players.humanTurn && this.board[row][col].bottomVal > this.board[row][col].topVal){
-    //             console.log("bottom value is greater than top")
-    //             players.humanScore+=1
-    //             players.compScore-=1
-    //         } else if(players.compTurn && this.board[row][col].bottomVal > this.board[row][col].topVal){
-    //             console.log('the bottom value is greater than the top')
-    //             players.humanScore-=1
-    //             players.compScore+=1
-    //     }
-    // }
-//         if(this.board[row][col - 1]) {
-//             console.log('Check the Left')
-//             // checkLeft()
-//             if(players.humanTurn && this.board[row][col].leftVal > this.board[row][col].rightVal){
-//                 console.log("left value is greater than right")
-//                 players.humanScore+=1
-//                 players.compScore-=1
-//             } else if(players.compTurn && this.board[row][col].leftVal > this.board[row][col].rightVal){
-//                 console.log('the left value is greater than the right')
-//                 players.humanScore-=1
-//                 players.compScore+=1
-//             }
-//         }
-//     }
-// }
+
+
+        if(this.board[row + 1] && this.board[row + 1][col]) {
+            console.log('Check the Bottom')
+            if(players.humanTurn && this.board[row][col].bottomVal > this.board[row][col].topVal){
+                console.log("bottom value is greater than top")
+                players.humanScore+=1
+                players.compScore-1
+            } else if(players.compTurn && this.board[row][col].bottomVal > this.board[row][col].topVal){
+                console.log('the bottom value is greater than the top')
+                players.humanScore-=1
+                players.compScore+=1
+        }
+    }
+
+
+        if(this.board[row] && this.board[row][col-1]) {
+            console.log('Check the Left')
+            // checkLeft()
+            if(players.humanTurn && this.board[row][col].leftVal > this.board[row][col].rightVal){
+                console.log("left value is greater than right")
+                players.humanScore+=1;
+                players.compScore-=1;
+            } else if(players.compTurn && this.board[row][col].leftVal > this.board[row][col].rightVal){
+                console.log('the left value is greater than the right')
+                players.humanScore-=1
+                players.compScore+=1
+            }
+        }
     },
     randomizeDeck(array){
         let cardIndex = array.length;
