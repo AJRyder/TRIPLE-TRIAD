@@ -184,6 +184,7 @@ const players = {
 // build the game board ... 3x3 'card tiles' 
 const game = {
     // Game turns to determine winner 
+    gameTurns: 0, 
 
     //     // GAME BOARD        
     board: [
@@ -230,7 +231,6 @@ const game = {
                 console.log("top value is greater than bottom")
                 players.humanScore+=1
                 players.compScore-=1
-              
                 // change card's bg color to blue with jquery
                 let originalClass = $(`div[row=${row-1}]`).filter(`div[col=${col}]`).children().attr('class')
                 $(`div[row=${row-1}]`).filter(`div[col=${col}]`).children().attr('class', `${originalClass}, playerBoardCard`)
@@ -261,7 +261,6 @@ const game = {
                 console.log("right value is greater than left")
                 players.humanScore+=1
                 players.compScore-=1
-              
                 //change card's bg color to blue in jquery
                 let originalClass = $(`div[row=${row}]`).filter(`div[col=${col+1}]`).children().attr('class')
                 $(`div[row=${row}]`).filter(`div[col=${col+1}]`).children().attr('class', `${originalClass}, playerBoardCard`)
@@ -333,7 +332,6 @@ const game = {
                 console.log('the left value is greater than the right')
                 players.humanScore-=1
                 players.compScore+=1
-                
                  //change card's bg color to red in jquery
                  let originalClass = $(`div[row=${row}]`).filter(`div[col=${col-1}]`).children().attr('class')
                  $(`div[row=${row}]`).filter(`div[col=${col-1}]`).children().attr('class', `${originalClass}, compBoardCard`) 
@@ -439,16 +437,7 @@ const game = {
                 $('.compLeftNumCard5').append(players.compCards[4].leftVal)
                 $('.compRightNumCard5').append(players.compCards[4].rightVal)
         }, 
-        whoWins(){
-            if(players.humanCards.length === 0 && players.humanScore > players.compScore){ 
-                alert("Player has won")
-            } else if(players.humanCards.length === 0 && players.humanScore < players.compScore){
-                alert('computer has won')
-            } else if(players.humanCards.length === 0 && players.humanScore === players.compScore){
-            alert('the game is a tie')          
-        }
-    }      
-       
+         
 }
 // end of GAME OBJECT AND LOGIC 
 
@@ -583,6 +572,7 @@ $('#boardGrid').on('click', e => {
             }).append(card)
             game.board[row].splice(col, 1, players.humanHand.pop())
             game.checkBoard(row, col)
+            game.gameTurns+=1
             players.humanTurn = 0;
             players.compTurn = 1;
         } else {
@@ -599,6 +589,7 @@ $('#boardGrid').on('click', e => {
             }).append(compCard)
             game.board[row].splice(col, 1, players.compHand.pop())
             game.checkBoard(row, col)
+            game.gameTurns+=1
             players.compTurn = 0;
             players.humanTurn = 1;
         } else { 
@@ -618,6 +609,9 @@ console.log(players.humanCards)
 console.log(players.compCards)
 game.render();
 game.checkBoard();
+if(game.gameTurns === 9){
+    location.reload()
+}
 
 
 
