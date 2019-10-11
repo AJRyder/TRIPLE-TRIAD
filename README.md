@@ -1,8 +1,14 @@
 # TRIPLE-TRIAD
 
+Technologies Used 
+Javascript/Jquery 
+HTML 
+CSS 
+
+
 What is triple triad? 
 
-A mini-game from Final Fantasy 8 that utilizes cards to play against one another. The card with the greater numbered side it is touching on a hand, "captures" the card and adds to their score/subtracts from the opponent score. 
+A mini-game from Final Fantasy 8 that utilizes cards to play against one another on a gameboard. The card with the greater numbered side it is touching on a hand, "captures" the card and adds to their score/subtracts from the opponent score. 
 
 Players are represented by blue, CPU is represented by red. 
 
@@ -39,6 +45,69 @@ When a card is flipped, the card background will change to the winning side’s 
 
 
 When all 9 containers have cards placed, the game checks player and cpu scores; whoever has a higher score wins. 
+
+BOARD Mechanics: 
+A 3x3 grid of ‘containers’ with clear divisions that can be chosen, and populated with a card object  
+When a card object populates a container, no other card can be filled in that space for the rest of the round
+(stretch goal) Elemental types (fire, water, wind, bolt) can randomly be placed on containers to affect card values 
+
+
+CPU MECHANICS: 
+1. CPU cards are not visible (perhaps just the back of the card) when dealt to the left
+
+2. CPU should have cards randomly chosen from the array of objects ‘cards’ 
+
+3. CPU should be able to place a card on the grid randomly (to start there won’t be a smart AI like the real mini-game that pursues/punishes weak sides by choice)
+
+
+PLAYER MECHANICS:  
+1.Player cards are visible after being dealt to the right
+
+2.Player should have cards randomly chosen from the array of objects ‘cards’ 
+
+3. Player should be able to ‘click’ on one of the cards to choose it 
+	3a. Player should be able to click on an available container to SET where the card goes
+	3b. An additional click should then confirm and place the card down (removing it from    
+	the hand) 
+
+
+
+THE CARD MECHANICS
+---General ideas for ‘under the hood’--
+Cards objects will be a class that holds properties representing: 
+The card name 
+The card’s left, right, top, and bottom sides 
+The card’s elemental type (if any)  
+
+The cards will be stored as individual objects within an array that can later be accessed by the random shuffle and draw functions in the game logic 
+
+There are 110 total cards - for this project I’ll be working with much less cards (let’s say 20)
+ 
+Each player has a hand containing 5 cards; for now… cards are drawn randomly with players having a high chance of getting rare cards
+
+Each card has 4 side values (Top, Bottom, Left, and Right) 
+
+Card sides range from increasing values 1-10. 1 being the lowest, 10 being the highest
+
+
+
+
+
+
+
+
+
+
+
+CSS Requirements: 
+Thankfully the art assets already exist for all 100/110 cards; finding a way to set each card to an art asset could be done with a for loop
+The board graphics are also easily accessible and can be set as a background property inside the primary ‘ gamecontainer’
+HTML/CSS SKELETON 
+
+
+
+
+
 
 
 	
