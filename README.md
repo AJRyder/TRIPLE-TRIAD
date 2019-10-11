@@ -2,11 +2,14 @@
 
 # Technologies Used:
 
-Javascript/Jquery 
+
+Javascript/jQuery 
+
 HTML 
+
 CSS 
 
-PLAY ME HERE 
+# PLAY ME HERE 
 https://ajryder.github.io/TRIPLE-TRIAD/
 
 # What is triple triad? 
