@@ -183,7 +183,7 @@ const players = {
 // game object 
 // build the game board ... 3x3 'card tiles' 
 const game = {
-    // Game turns to determine winner 
+    // Game turns to determine end of game 
     gameTurns: 0, 
 
     //     // GAME BOARD        
@@ -230,9 +230,15 @@ const game = {
                 if(this.board[row-1][col].color === 'red'){ // if the card being attacked is a comp card "red"
                 console.log("top value is greater than bottom")
                 players.humanScore+=1
+                console.log(players.humanScore)
                 players.compScore-=1
+                console.log(players.compScore)
+
+                
+                console.log("This is how many turns there have been: " + game.gameTurns)
                 // change card's bg color to blue with jquery
                 let originalClass = $(`div[row=${row-1}]`).filter(`div[col=${col}]`).children().attr('class')
+
                 $(`div[row=${row-1}]`).filter(`div[col=${col}]`).children().attr('class', `${originalClass}, playerBoardCard`)
                 this.board[row-1][col].color = 'blue' // attacked card value is captured and becomes "blue"
                 $('#playerScore').text(`${players.humanScore}`)
@@ -242,7 +248,13 @@ const game = {
                 if(this.board[row-1][col].color === 'blue'){ // if the card being attacked is a player card "blue"
                 console.log('the top value is greater than the bottom')
                 players.compScore+=1
+                console.log(players.compScore)
                 players.humanScore-=1
+                console.log(players.humanScore)
+
+                
+                console.log("This is how many turns there have been: " + game.gameTurns)
+
                 let originalClass = $(`div[row=${row-1}]`).filter(`div[col=${col}]`).children().attr('class')
                 $(`div[row=${row-1}]`).filter(`div[col=${col}]`).children().attr('class', `${originalClass}, compBoardCard`)
                   // change card's bg color to red with jquery
@@ -260,7 +272,13 @@ const game = {
                 if(this.board[row][col+1].color === 'red'){
                 console.log("right value is greater than left")
                 players.humanScore+=1
+                console.log(players.humanScore)
                 players.compScore-=1
+                console.log(players.compScore)
+
+                
+                console.log("This is how many turns there have been: " + game.gameTurns)
+
                 //change card's bg color to blue in jquery
                 let originalClass = $(`div[row=${row}]`).filter(`div[col=${col+1}]`).children().attr('class')
                 $(`div[row=${row}]`).filter(`div[col=${col+1}]`).children().attr('class', `${originalClass}, playerBoardCard`)
@@ -272,7 +290,13 @@ const game = {
                 if(this.board[row][col+1].color === 'blue'){
                 console.log('the right value is greater than the left')
                 players.humanScore-=1
+                console.log("hitting " + players.humanScore)
                 players.compScore+=1
+                console.log(players.compScore)
+
+                
+                console.log("This is how many turns there have been: " + game.gameTurns)
+
                 this.board[row][col+1].color = 'red'
                  //change card's bg color to red in jquery
                  let originalClass = $(`div[row=${row}]`).filter(`div[col=${col+1}]`).children().attr('class')
@@ -290,7 +314,13 @@ const game = {
                 if(this.board[row+1][col].color === 'red'){
                     console.log("bottom value is greater than top")
                 players.humanScore+=1
-                players.compScore-1
+                console.log(players.humanScore)
+                players.compScore-=1
+                console.log(players.compScore)
+
+                
+                console.log("This is how many turns there have been: " + game.gameTurns)
+
                  //change card's bg color to blue in jquery
                  let originalClass = $(`div[row=${row+1}]`).filter(`div[col=${col}]`).children().attr('class')
                  $(`div[row=${row+1}]`).filter(`div[col=${col}]`).children().attr('class', `${originalClass}, playerBoardCard`)
@@ -302,7 +332,13 @@ const game = {
                 if(this.board[row+1][col].color === 'blue'){
                     console.log('the bottom value is greater than the top')
                 players.humanScore-=1
+                console.log(players.humanScore)
                 players.compScore+=1
+                console.log(players.compScore)
+
+                
+                console.log("This is how many turns there have been: " + game.gameTurns)
+
                  //change card's bg color to red in jquery
                  let originalClass = $(`div[row=${row+1}]`).filter(`div[col=${col}]`).children().attr('class')
                  $(`div[row=${row+1}]`).filter(`div[col=${col}]`).children().attr('class', `${originalClass}, compBoardCard`)
@@ -320,6 +356,10 @@ const game = {
                 console.log("left value is greater than right")
                 players.humanScore+=1;
                 players.compScore-=1;
+
+                
+                console.log("This is how many turns there have been: " + game.gameTurns)
+
                  //change card's bg color to blue in jquery
                  let originalClass = $(`div[row=${row}]`).filter(`div[col=${col-1}]`).children().attr('class')
                  $(`div[row=${row}]`).filter(`div[col=${col-1}]`).children().attr('class', `${originalClass}, playerBoardCard`)
@@ -332,6 +372,10 @@ const game = {
                 console.log('the left value is greater than the right')
                 players.humanScore-=1
                 players.compScore+=1
+
+                
+                console.log("This is how many turns there have been: " + game.gameTurns)
+
                  //change card's bg color to red in jquery
                  let originalClass = $(`div[row=${row}]`).filter(`div[col=${col-1}]`).children().attr('class')
                  $(`div[row=${row}]`).filter(`div[col=${col-1}]`).children().attr('class', `${originalClass}, compBoardCard`) 
@@ -437,8 +481,23 @@ const game = {
                 $('.compLeftNumCard5').append(players.compCards[4].leftVal)
                 $('.compRightNumCard5').append(players.compCards[4].rightVal)
         }, 
-         
+        detectWin(){
+            while(game.gameTurns > 8){
+                if(players.humanScore > players.compScore) {
+                    console.log("----------->player blue wins")
+                    alert("Player blue wins!")
+                    return game.gameTurns
+                } else { 
+                    if(players.humanScore < players.compScore) {
+                        console.log("------------->player red wins!")
+                        alert("Player red wins!")
+                        return game.gameTurns
+                    }
+                }
+            }
+        }
 }
+
 // end of GAME OBJECT AND LOGIC 
 
 
@@ -494,9 +553,7 @@ const game = {
         $('#playerChosenCard').append(playerCardFive)
         }
     });
-    // if playerHand[].length = 1
-    // do not allow other cards to be clicked from humanCards
-    // we only one want card in hand at a time
+
 
     //EVENT LISTENERS FOR CHOOSING COMPUTER CARD /player 2
 
@@ -561,10 +618,6 @@ $('#boardGrid').on('click', e => {
         if(!game.board[row][col] ) {
             console.log('human success')
             const card = $('#playerChosenCard').children().detach() // keeps the player chosen card active but styling is messed up 
-            // $(card).attr({
-            //     'class': 'boardCard',
-            //     'id': ''
-            // })
             console.log(card)
             $(e.target).attr({
                 'row': row,
@@ -572,7 +625,7 @@ $('#boardGrid').on('click', e => {
             }).append(card)
             game.board[row].splice(col, 1, players.humanHand.pop())
             game.checkBoard(row, col)
-            game.gameTurns+=1
+            game.gameTurns++
             players.humanTurn = 0;
             players.compTurn = 1;
         } else {
@@ -589,29 +642,30 @@ $('#boardGrid').on('click', e => {
             }).append(compCard)
             game.board[row].splice(col, 1, players.compHand.pop())
             game.checkBoard(row, col)
-            game.gameTurns+=1
+            game.gameTurns++
             players.compTurn = 0;
             players.humanTurn = 1;
         } else { 
             console.log("THIS SPOT IS TAKEN!!!")
         }
     }
-})
+});
 
 
 
-    
+
+ 
 
 const shuffledDeck = game.randomizeDeck(game.deck)
 console.log(shuffledDeck)
 const draw = game.draw()
+game.gameTurns = 0 
 console.log(players.humanCards)
 console.log(players.compCards)
 game.render();
 game.checkBoard();
-if(game.gameTurns === 9){
-    location.reload()
-}
+game.detectWin();
+
 
 
 

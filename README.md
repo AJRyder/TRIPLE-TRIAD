@@ -8,7 +8,7 @@ CSS
 PLAY ME HERE 
 https://ajryder.github.io/TRIPLE-TRIAD/
 
-What is triple triad? 
+## What is triple triad? 
 
 A mini-game from Final Fantasy 8 that utilizes cards to play against one another on a gameboard. The card with the greater numbered side it is touching on a hand, "captures" the card and adds to their score/subtracts from the opponent score. 
 
@@ -20,14 +20,14 @@ The goal of the game is capture the opposing player’s card to accumulate point
 
 In this version, player "blue" goes first, then "player red". You can not place a card on the board unless it is your turn, but you can pull one from your drawn cards for the next round. 
 
-THE GAMEBOARD: 
+## THE GAMEBOARD: 
 
 The game table is a 3 x 3 board (hence the name, triple triad) that will be built with containers. 
 
 Each of the 9 containers can be passed a card from a hand and rendered unplayable (unable to have another card placed) by the player or CPU for the rest of the game
 
 
-THE GAME Logic 
+## THE GAME Logic 
 
 Player and CPU start with a score of 5 - representing the 5 cards in their hand
 
@@ -48,21 +48,14 @@ When a card is flipped, the card background will change to the winning side’s 
 
 When all 9 containers have cards placed, the game checks player and cpu scores; whoever has a higher score wins. 
 
-BOARD Mechanics: 
-A 3x3 grid of ‘containers’ with clear divisions that can be chosen, and populated with a card object  
+## BOARD Mechanics: 
+3 Rows with 3 'board tiles' to build the grid of ‘containers’ with clear divisions that can be chosen, and populated with a card object  
 When a card object populates a container, no other card can be filled in that space for the rest of the round
 (stretch goal) Elemental types (fire, water, wind, bolt) can randomly be placed on containers to affect card values 
 
 
-CPU MECHANICS: 
-1. CPU cards are not visible (perhaps just the back of the card) when dealt to the left
 
-2. CPU should have cards randomly chosen from the array of objects ‘cards’ 
-
-3. CPU should be able to place a card on the grid randomly (to start there won’t be a smart AI like the real mini-game that pursues/punishes weak sides by choice)
-
-
-PLAYER MECHANICS:  
+## PLAYER MECHANICS:  
 1.Player cards are visible after being dealt to the right
 
 2.Player should have cards randomly chosen from the array of objects ‘cards’ 
@@ -74,7 +67,7 @@ PLAYER MECHANICS:
 
 
 
-THE CARD MECHANICS
+## THE CARD MECHANICS
 ---General ideas for ‘under the hood’--
 Cards objects will be a class that holds properties representing: 
 The card name 
@@ -92,16 +85,7 @@ Each card has 4 side values (Top, Bottom, Left, and Right)
 Card sides range from increasing values 1-10. 1 being the lowest, 10 being the highest
 
 
-
-
-
-
-
-
-
-
-
-CSS Requirements: 
+## CSS Requirements: 
 Thankfully the art assets already exist for all 100/110 cards; finding a way to set each card to an art asset could be done with a for loop
 The board graphics are also easily accessible and can be set as a background property inside the primary ‘ gamecontainer’
 HTML/CSS SKELETON 

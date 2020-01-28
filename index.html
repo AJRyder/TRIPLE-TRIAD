@@ -15,12 +15,6 @@
     <title>Triple Triad</title>
 </head>
 <body>
-        <!-- <script>
-                function play(){
-                        let audio = document.getElementById("./music/tripletriad.mp3")
-                        audio.play();
-                                }        
-        </script>        -->
         
         <img src = "https://i.ytimg.com/vi/JL7-p17R8Bs/maxresdefault.jpg"/>
         <div id = "playerScore">5</div>
@@ -207,12 +201,36 @@
                 </div>
         </div>
           
-                </div>
+               
         </div>
 
   
       
         <script src="js/app.js"></script>
-        
+        <audio id="myAudio" controls>
+                <source src="./music/tripletriad.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+        </audio><br>
+              
+              <button id="audio-controls" onclick="enableControls()" type="button">Enable controls</button>
+              <button id="audio-controls" onclick="disableControls()" type="button">Disable controls</button>
+              <button id="audio-controls" onclick="checkControls()" type="button">Check controls status</button>
+              
+              <script>
+              var x = document.getElementById("myAudio");
+              function enableControls() { 
+                x.controls = true;
+                x.load();
+              } 
+              
+              function disableControls() { 
+                x.controls = false;
+                x.load();
+              } 
+               
+              function checkControls() { 
+                alert(x.controls);
+              } 
+        <script>
 </body>
 </html>
