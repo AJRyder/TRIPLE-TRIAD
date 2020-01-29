@@ -14,17 +14,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Triple Triad</title>
 </head>
-<body>   
-        <header class="header-container">   
-                <div class="wrap">
-                        <a href="#M"><input class="infoBtn" type="image" src="img/info-text.png"></input></a>
-                        <div id="M" class="modal">
-                                <div class="modal-content">
-                                        <a class="closebutton" href="#">&times;</a>
-                                        <h1>HOW TO PLAY TRIPLE TRIAD</h1>
-                                        <p>Rules blah balh blah</p>
-                                </div>
-                                <a href="#" class="closeoverlay"></a>
+<body>                      
+        <img class="boardbackground" src = "https://i.ytimg.com/vi/JL7-p17R8Bs/maxresdefault.jpg">
+        
+                <div id = "playerScore">5</div>
+                <div id = "computerScore">5</div>
+                <div id = 'boardGrid'>
+                        <div class = "row">
+                                <div class = "boardTiles" row='0' col='0' id = 'row1_Col1'></div>
+                                <div class = "boardTiles" row='0' col='1' id = 'row1_Col2'></div>
+                                <div class = "boardTiles" row='0' col='2' id = 'row1_Col3'></div>
                         </div>
                 </div>
         </header>
@@ -39,188 +38,40 @@
                         <div>
                                 <div id = 'compChosenCard'></div>
                         </div>
-                </article>
-                        <article id = 'playerDrawnCards'>        
-                                <div class = "playerCards" id = 'playerCardOne'>
-                                        <div>
-                                                <h1 class = 'playerCardOneTop'></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = "playerCardOneBottom"></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = 'playerCardOneLeft'></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = 'playerCardOneRight'></h1>
-                                        </div>
+                </div>
+        </img>
+        <div class="wrap">
+                <a href="#M"><input class="infoBtn" type="image" src="img/info-text.png"></input></a>
+                <div id="M" class="modal">
+                  <div class="modal-content">
+                    <a class="closebutton" href="#">&times;</a>
+                    <h1>HOW TO PLAY TRIPLE TRIAD</h1>
+                    <p>Rules blah balh blah</p>
+                  </div>
+                  <a href="#" class="closeoverlay"></a>
+                </div>
+              </div>
+
+  <!-- Player's Active Hand -->
+  <div id = 'playerChosenCard'></div>
+  <!-- Computer's Active Hand -->
+  <div id = 'compChosenCard'></div>
+        <!-- player Card numbers -->
+        <div id = 'playerDrawnCards'>
+
+                <div class = "playerCards" id = 'playerCardOne'>
+                                <div>
+                                        <h1 class = 'playerCardOneTop'></h1>
                                 </div>
-                                
-                                <div class = "playerCards" id = 'playerCardTwo'>
-                                        <div>
-                                                <h1 class = 'playerTopNumCard2'></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = "playerBottomNumCard2"></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = 'playerLeftNumCard2'></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = 'playerRightNumCard2'></h1>
-                                        </div>
+                                <div>
+                                        <h1 class = "playerCardOneBottom"></h1>
                                 </div>
-                                
-                                <div class = "playerCards" id = 'playerCardThree'>
-                                        <div>
-                                                <h1 class = 'playerTopNumCard3'></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = "playerBottomNumCard3"></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = 'playerLeftNumCard3'></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = 'playerRightNumCard3'></h1>
-                                        </div>
+                                <div>
+                                        <h1 class = 'playerCardOneLeft'></h1>
                                 </div>
-                                
-                                <div class = "playerCards" id = 'playerCardFour'>
-                                        <div>
-                                                <h1 class = 'playerTopNumCard4'></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = "playerBottomNumCard4"></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = 'playerLeftNumCard4'></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = 'playerRightNumCard4'></h1>
-                                        </div>
+                                <div>
+                                        <h1 class = 'playerCardOneRight'></h1>
                                 </div>
-                                
-                                <div class = "playerCards" id = 'playerCardFive'>
-                                        <div>
-                                                <h1 class = 'playerTopNumCard5'></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = "playerBottomNumCard5"></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = 'playerLeftNumCard5'></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = 'playerRightNumCard5'></h1>
-                                        </div>
-                                </div>
-                        </article>
-                        <article class="boardGrid-Container">
-                                <div id = 'boardGrid'>
-                                        <div class = "row">
-                                                <div class = "boardTiles" row='0' col='0' id = 'row1_Col1'></div>
-                                                <div class = "boardTiles" row='0' col='1' id = 'row1_Col2'></div>
-                                                <div class = "boardTiles" row='0' col='2' id = 'row1_Col3'></div>
-                                        </div>
-                                        <div class = "row">
-                                                <div class = "boardTiles" row='1' col='0' id = 'row2_Col1'></div>
-                                                <div class = "boardTiles" row='1' col='1' id = 'row2_Col2'></div>
-                                                <div class = "boardTiles" row='1' col='2' id = 'row2_Col3'></div>
-                                        </div>
-                                        <div class = "row">
-                                                <div class = "boardTiles" row='2' col='0' id = 'row3_Col1'></div>
-                                                <div class = "boardTiles" row='2' col='1' id = 'row3_Col2'></div>
-                                                <div class = "boardTiles" row='2' col='2' id = 'row3_Col3'></div>
-                                        </div>
-                                </div>
-                        </article>                
-                        <!-- COMPUTER CARD NUMBERS -->
-                        <article id = 'computerDrawnCards'>             
-                                <div class = "compCards" id = 'compCardOne'>
-                                        <div>
-                                                <h1 class = 'compTopNum'></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = "compBottomNum"></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = 'compLeftNum'></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = 'compRightNum'></h1>
-                                        </div>
-                                </div>
-                                
-                                <div class = "compCards" id = 'compCardTwo'>
-                                        <div>
-                                                <h1 class = 'compTopNumCard2'></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = "compBottomNumCard2"></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = 'compLeftNumCard2'></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = 'compRightNumCard2'></h1>
-                                        </div>
-                                </div>
-                                
-                                <div class = "compCards" id = 'compCardThree'>
-                                        <div>
-                                                <h1 class = 'compTopNumCard3'></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = "compBottomNumCard3"></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = 'compLeftNumCard3'></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = 'compRightNumCard3'></h1>
-                                        </div>
-                                </div>
-                                
-                                <div class = "compCards" id = 'compCardFour'>
-                                        <div>
-                                                <h1 class = 'compTopNumCard4'></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = "compBottomNumCard4"></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = 'compLeftNumCard4'></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = 'compRightNumCard4'></h1>
-                                        </div>
-                                </div>
-                                
-                                <div class = "compCards" id = 'compCardFive'>
-                                        <div>
-                                                <h1 class = 'compTopNumCard5'></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = "compBottomNumCard5"></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = 'compLeftNumCard5'></h1>
-                                        </div>
-                                        <div>
-                                                <h1 class = 'compRightNumCard5'></h1>
-                                        </div>
-                                </div>
-                        </article>
-                </section>    
-        </main>                   
-        <footer class="footer-Container">
-                <div id = "playerScore">5</div>
-                <div id = "audio-div">
-                        <audio id="myAudio" controls>
-                                <source src="./music/tripletriad.mp3" type="audio/mpeg">
-                                        Your browser does not support the audio element.
-                        </audio>
                 </div>
                 
                 <button class="audio-controls" onclick="enableControls()" type="button">Enable controls</button>
@@ -233,15 +84,55 @@
                                 x.load();
                         } 
                         
-                        function disableControls() { 
-                                x.controls = false;
-                                x.load();
-                        } 
-                        
-                        function checkControls() { 
-                                alert(x.controls);
-                        } 
-                </script>
+                <div class = "playerCards" id = 'playerCardFour'>
+                                <div>
+                                        <h1 class = 'playerTopNumCard4'></h1>
+                                </div>
+                                <div>
+                                        <h1 class = "playerBottomNumCard4"></h1>
+                                </div>
+                                <div>
+                                        <h1 class = 'playerLeftNumCard4'></h1>
+                                </div>
+                                <div>
+                                        <h1 class = 'playerRightNumCard4'></h1>
+                                </div>
+                </div>
+
+                <div class = "playerCards" id = 'playerCardFive'>
+                                <div>
+                                        <h1 class = 'playerTopNumCard5'></h1>
+                                </div>
+                                <div>
+                                        <h1 class = "playerBottomNumCard5"></h1>
+                                </div>
+                                <div>
+                                        <h1 class = 'playerLeftNumCard5'></h1>
+                                </div>
+                                <div>
+                                        <h1 class = 'playerRightNumCard5'></h1>
+                                </div>
+                </div>
+        </div>
+</div>
+
+
+        <!-- COMPUTER CARD NUMBERS -->
+        <div id = 'computerDrawnCards'>
+
+                <div class = "compCards" id = 'compCardOne'>
+                                <div>
+                                         <h1 class = 'compTopNum'></h1>
+                                </div>
+                                <div>
+                                        <h1 class = "compBottomNum"></h1>
+                                </div>
+                                <div>
+                                        <h1 class = 'compLeftNum'></h1>
+                                </div>
+                                <div>
+                                        <h1 class = 'compRightNum'></h1>
+                                </div>
                 </div>
                 <div id = "computerScore">5</div>
                         <!-- <p>Copyright 2020 Aaron James Ryder </p> -->
@@ -253,3 +144,33 @@
 
 
 
+  
+      
+        <script src="js/app.js"></script>
+        <audio id="myAudio" controls>
+                <source src="./music/tripletriad.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+        </audio><br>
+              
+              <button id="audio-controls" onclick="enableControls()" type="button">Enable controls</button>
+              <button id="audio-controls" onclick="disableControls()" type="button">Disable controls</button>
+              <button id="audio-controls" onclick="checkControls()" type="button">Check controls status</button>
+              
+              <script>
+              var x = document.getElementById("myAudio");
+              function enableControls() { 
+                x.controls = true;
+                x.load();
+              } 
+              
+              function disableControls() { 
+                x.controls = false;
+                x.load();
+              } 
+               
+              function checkControls() { 
+                alert(x.controls);
+              } 
+        </script>
+</body>
+</html>
