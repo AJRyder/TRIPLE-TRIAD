@@ -247,7 +247,6 @@ PLAYER AND COMPUTER ELEMENTS
     bottom: 3075px;
     z-index: 1;
     cursor: pointer; 
-<<<<<<< HEAD
 }
 
 #playerCardOne {
@@ -255,8 +254,7 @@ PLAYER AND COMPUTER ELEMENTS
     top: 5em; 
     left: 10px; 
     z-index: 1; 
-=======
->>>>>>> e03bfea... added info modal wiht animation
+
 }
 
 #playerCardTwo { 
