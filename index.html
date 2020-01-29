@@ -14,11 +14,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Triple Triad</title>
 </head>
-<body>
+<body>                      
+        <img class="boardbackground" src = "https://i.ytimg.com/vi/JL7-p17R8Bs/maxresdefault.jpg">
         
-        <img src = "https://i.ytimg.com/vi/JL7-p17R8Bs/maxresdefault.jpg"/>
-        <div id = "playerScore">5</div>
-        <div id = "computerScore">5</div>
+                <div id = "playerScore">5</div>
+                <div id = "computerScore">5</div>
                 <div id = 'boardGrid'>
                         <div class = "row">
                                 <div class = "boardTiles" row='0' col='0' id = 'row1_Col1'></div>
@@ -37,6 +37,18 @@
                         </div>
                 </div>
         </img>
+        <div class="wrap">
+                <a href="#M"><input class="infoBtn" type="image" src="img/info-text.png"></input></a>
+                <div id="M" class="modal">
+                  <div class="modal-content">
+                    <a class="closebutton" href="#">&times;</a>
+                    <h1>HOW TO PLAY TRIPLE TRIAD</h1>
+                    <p>Rules blah balh blah</p>
+                  </div>
+                  <a href="#" class="closeoverlay"></a>
+                </div>
+              </div>
+
   <!-- Player's Active Hand -->
   <div id = 'playerChosenCard'></div>
   <!-- Computer's Active Hand -->
@@ -133,7 +145,7 @@
                                         <h1 class = "compBottomNum"></h1>
                                 </div>
                                 <div>
-                                        <h1 class = 'compLeftNum'></h1>>
+                                        <h1 class = 'compLeftNum'></h1>
                                 </div>
                                 <div>
                                         <h1 class = 'compRightNum'></h1>
@@ -232,5 +244,6 @@
                 alert(x.controls);
               } 
         </script>
+        </div>
 </body>
 </html>
