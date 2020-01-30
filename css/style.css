@@ -1,31 +1,60 @@
-
-body { 
-    display: absolute; 
-    background-color: ivory;
-    background-size: cover;
-    position: relative; 
-    height: 100%; 
-    width: 100%;  
+body, html {
+    height: 100%;
+    background-color: black;
 }
 
+main { 
+    display: flex;  
+    flex-direction: column;
+    background-size: cover;
+    margin: 0px; 
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.game-container{
+    display: flex;  
+    /* align-self: center; */
+    /* height: 100%; */
+    background: url("../img/board-mat.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.footer-Container{
+    display: flex; 
+    flex-direction: row;
+}
+.
+footer { 
+    display: flex; 
+    z-index: 5;  
+    bottom: 0; 
+    width: 100%;
+    height: 2.5rem; 
+    background-color: black;
+}
+header {
+    display: flex; 
+    height: 3em; 
+}
 audio { 
     opacity: 50%; 
     z-index: 2;
 }
 #myAudio { 
     display: flex; 
-    position: absolute;
-    top: 90em;
-    left: 48em; 
+    /* top: 90em;
+    left: 48em;  */
     color: grey;
 }
-#audio-controls {
-   visibility: hidden;
+.audio-controls {
+   display: none;
 }
+
 
 .infoBtn { 
     display: flex; 
-    position: absolute; 
+    flex-direction: row;
     top: 1em;
     left: 73em;
     opacity: 50%;  
@@ -40,9 +69,9 @@ audio {
     pointer-events: none;
     background: rgba(0, 0, 0, .5);
     transition: all ease 1s;
-  }
+}
   
-  .closeoverlay {
+.closeoverlay {
     top: 0;
     right: 0;
     bottom: 0;
@@ -52,27 +81,27 @@ audio {
     z-index: 2;
     position: fixed;
     cursor: pointer;
-  }
+}
   
-  .closebutton {
+.closebutton {
     color: red;
     text-decoration: none;
     font-size: 30px;
     margin: 0 auto;
     display: table;
-  }
+}
   
-  .modal:target {
+.modal:target {
     opacity: 1;
     pointer-events: auto;
     
-  }
+}
   
-  .modal:target>.closeoverlay {
+.modal:target>.closeoverlay {
     display: block;
-  }
+}
   
-  .modal>div {
+.modal>div {
     width: 1000px;
     height: 500px;
     max-width: 75vw;
@@ -81,56 +110,52 @@ audio {
     position: relative;
     background: #131418;
     z-index: 3
-  }
+}
   
-  .wrap,
-  .modal {
+.wrap, 
+.modal {
     display: flex;
     align-items: center;
     justify-content: center
-  }
+}
   
-  .modal-content {
+.modal-content {
    overflow-y:auto
-  }
+}
+/*demo fluff */
+p {
+color: green;
+font-size: 20px;
+display: block;
+}
+
+button {
+margin: 2em 0 0 0;
+cursor: pointer;
+}
+
+.closebutton:hover {
+color: white;
+cursor: pointer;
+}
   
-  
-  /*demo fluff */
-  
-  p {
-    color: green;
-    font-size: 20px;
-    display: block;
-  }
-  
-  button {
-    margin: 2em 0 0 0;
-    cursor: pointer;
-  }
-  
-  .closebutton:hover {
-    color: white;
-    cursor: pointer;
-  }
-  
-  .clutter, .modal-content p {
-    margin: 2em auto;
-    padding: 40px;
-    max-width: 100%;
-    text-align: justify;
-  }
+.clutter, .modal-content p {
+margin: 2em auto;
+padding: 40px;
+max-width: 100%;
+text-align: justify;
+}
 
 img { 
     display: flex; 
     background-size: cover; 
     flex-grow: inherit;
-    height: 1500px; 
-    width: 1800px; 
+    height: 100%;
 }
+
 #playerScore { 
-    display: absolute; 
-    position: relative;
-    opacity: .7;
+    display: flex;
+    flex-direction: column;
     color: mediumturquoise;
     -webkit-text-stroke: 1px white; 
     text-shadow: 3px 3px 0 #000, 
@@ -145,8 +170,6 @@ img {
 }
 
 #computerScore { 
-    display: absolute; 
-    position: relative;
     opacity: .7;
     color: palevioletred;
     -webkit-text-stroke: 1px white; 
@@ -156,33 +179,34 @@ img {
                  -1px 1px 0 #000,
                  1px 1px 0 #000;
     font-size: 150px; 
-    left: 150px; 
-    bottom: 350px; 
     z-index: 1; 
 }
-
+.boardGrid-Container { 
+    width: 54%;
+    display: flex;
+    justify-content: center;
+}
 /* BOARD ELEMENTS  */
 #boardGrid { 
     display: flex; 
     flex-direction: column;
     justify-content: space-around;
     position: relative;
-    height: 1250px; 
+    height: 100%; 
     padding:25px; 
-    width: 800px; 
-    bottom: 1750px; 
-    left: 475px; 
+    width: 800px;  
 }
 .boardTiles { 
+    display: flex;
+    background-color: yellow;
+    opacity: .3; 
+    align-items: center;
     flex: 0 0 32%; 
     margin-bottom: 5px; 
-    height: 300px;
-    display: flex;
+    height: 100%;
     justify-content: center;
-    align-items: center;
     cursor: pointer; 
 }
-
 
 .row {
     width: 100%;
@@ -193,25 +217,23 @@ img {
 }
 
 #playerDrawnCards { 
-    position: absolute;
-    width: 20%; 
-    height: 20%; 
-    bottom: 2600px;
-    left: 1500px; 
-    cursor: pointer; 
+    cursor: pointer;
+    width: 23%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #computerDrawnCards { 
-    position: absolute;
-    width: 10%; 
-    height: 10%; 
-    bottom: 3000px;
-    left: 125px;
-    cursor: pointer; 
+    cursor: pointer;
+    width: 23%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
 }
 
 /* PLAYER AND COMPUTER ELEMENTS  */
-#DrawnCards { 
+/* #DrawnCards { 
     display: absolute; 
     position: relative;
     background-color: aquamarine;
@@ -219,7 +241,7 @@ img {
     bottom: 700px;
     right: 500px;  
     cursor: pointer; 
-}
+} */
 
 .playerCards {
     background-size: 100%;
@@ -235,16 +257,44 @@ img {
 
 #playerChosenCard { 
     background: fill;
-    position: relative; 
     opacity: .75; 
     height: 200px;
     width: 180px;
-    left: 1500px; 
-    bottom: 3075px;
-    z-index: 1;
     cursor: pointer; 
 }
 
+#playerCardOne {
+    position: relative; 
+    top: 5em; 
+    left: 10px; 
+    z-index: 1; 
+}
+
+#playerCardTwo { 
+    position: relative; 
+    top: 0em;
+    left: 10px;
+    z-index: 2; 
+}
+#playerCardThree { 
+    position: relative; 
+    top: -5em; 
+    left: 10px; 
+    z-index: 3; 
+}
+#playerCardFour { 
+    display: flex; 
+    position: relative;
+    top: -10em; 
+    left: 10px; 
+    z-index: 4; 
+}
+#playerCardFive { 
+    position: relative;
+    top: -15em;  
+    left: 10px; 
+    z-index: 5; 
+}
 .compCards {
     background-size: 100%;
     display: block; 
@@ -255,6 +305,37 @@ img {
     font-weight: 2;
     color: whitesmoke;
     cursor: pointer; 
+}
+#compCardOne {
+    position: relative; 
+    top: 5em; 
+    left: 10px; 
+    z-index: 1; 
+}
+#compCardTwo { 
+    position: relative; 
+    top: 0em;
+    left: 10px;
+    z-index: 2; 
+}
+#compCardThree { 
+    position: relative; 
+    top: -5em; 
+    left: 10px; 
+    z-index: 3; 
+}
+#compCardFour { 
+    display: flex; 
+    position: relative;
+    top: -10em; 
+    left: 10px; 
+    z-index: 4; 
+}
+#compCardFive { 
+    position: relative;
+    top: -15em;  
+    left: 10px; 
+    z-index: 5; 
 }
 
 .playerBoardCard {
@@ -281,13 +362,9 @@ img {
 
 #compChosenCard { 
     background: fill; 
-    position: relative; 
     opacity: .75; 
     height: 250px;
     width: 250px; 
-    left: 125px; 
-    bottom: 3300px; 
-    z-index: 1;
 }
 
 
@@ -426,7 +503,7 @@ img {
     left: 15px; 
 }
 .compRightNum {
-    position: relative; 
+   position: relative; 
     bottom: 170px; 
     left: 45px;
 }

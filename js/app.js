@@ -160,21 +160,19 @@ const squall = new TriadCard('Squall', null, A, 6, 9, 4, "./img/cards/110.png")
 
 
 
-// GAME OBJECT BELOW 
-// 
+// PLAYER OBJECT 
 const players = {
     human: "Player",
     humanCards: [],
     humanHand: [],
     humanScore: 5,
-    humanTurn: 1,
+    humanTurn: null,
 
     computer: "Computer",
     compCards: [],
     compHand: [],
     compScore: 5, 
-    compTurn: 0,
-
+    compTurn: null,
 }
 
 
@@ -184,7 +182,7 @@ const players = {
 // build the game board ... 3x3 'card tiles' 
 const game = {
     // Game turns to determine end of game 
-    gameTurns: 0, 
+    gameTurns: null, 
 
     //     // GAME BOARD        
     board: [
@@ -192,11 +190,6 @@ const game = {
             ["", "", ""], 
             ["", "", ""]
             ],
-    // board: [
-    //         ["", "x", ""], 
-    //         ["", "?", ""], 
-    //         ["", "", ""]
-    //         ],
     // this.board[row + 1][col] targets the space below
     // this.board[row][col - 1] targets the left
     // this.board[row][col + 1] targets right
@@ -219,6 +212,22 @@ const game = {
             ward, kiros, lagun, selph, quist, irv, zell, rino,
             edea, seifer, squall
     ],
+    setTurn(){
+        const firstTurn = Math.round(Math.random())
+        console.log("This is the first turn value--->" + firstTurn)
+        players.humanTurn = firstTurn
+        if(players.humanTurn === 1){ 
+            players.humanTurn = 1
+            console.log("If this is 1, then player goes first " + players.humanTurn)
+            alert("player blue goes first")
+        } else { 
+            players.compTurn = 1
+            console.log(players.compTurn)
+            alert("player red goes first")
+        }
+        console.log(players.humanTurn)
+        return firstTurn
+    },
     checkBoard(rowS, colS) {
         // console.log(this.board[row][col], row, col, 'THIS IS THE SPOT ON THE BOARD')
         const row = parseInt(rowS)
@@ -482,17 +491,19 @@ const game = {
                 $('.compRightNumCard5').append(players.compCards[4].rightVal)
         }, 
         detectWin(){
-            while(game.gameTurns > 8){
+            const turnCount = game.gameTurns 
+            while(turnCount >= 9){
                 if(players.humanScore > players.compScore) {
                     console.log("----------->player blue wins")
                     alert("Player blue wins!")
-                    return game.gameTurns
                 } else { 
                     if(players.humanScore < players.compScore) {
                         console.log("------------->player red wins!")
                         alert("Player red wins!")
-                        return game.gameTurns
-                    }
+                } else { 
+                    console.log("it's a tie")
+                    alert("It's a draw!")
+                }
                 }
             }
         }
@@ -659,7 +670,7 @@ $('#boardGrid').on('click', e => {
 const shuffledDeck = game.randomizeDeck(game.deck)
 console.log(shuffledDeck)
 const draw = game.draw()
-game.gameTurns = 0 
+game.setTurn(); 
 console.log(players.humanCards)
 console.log(players.compCards)
 game.render();
