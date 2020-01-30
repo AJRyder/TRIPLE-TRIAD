@@ -6,10 +6,7 @@ body, html {
 main { 
     display: flex;  
     flex-direction: column;
-    background-size: cover;
     margin: 0px; 
-    background-position: center;
-    background-repeat: no-repeat;
 }
 .game-container{
     display: flex;  
@@ -18,6 +15,8 @@ main {
     background: url("../img/board-mat.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    height: 100%;
+    width: 100%; 
 }
 
 .footer-Container{
@@ -192,8 +191,7 @@ img {
     flex-direction: column;
     justify-content: space-around;
     position: relative;
-    height: 100%; 
-    padding:25px; 
+    height: 100%;
     width: 800px;  
 }
 .boardTiles { 
@@ -371,31 +369,33 @@ img {
 
 /* CARD 1 NUMBERS */
 .playerCardOneTop{
-    position: relative; 
-    margin: auto; 
-    top: 10px;
-    left: 30px; 
+    position: relative;
+    margin: auto;
+    top: 8px;
+    left: 30px;
 }
 .playerCardOneBottom{
     position: relative; 
-    left: 30px; 
+    left: 30px;
+    top: -6px;
 }
 .playerCardOneRight {
     position: relative; 
-    bottom: 170px; 
-    left: 45px;
+    bottom: 118px;
+    left: 50px;
 }    
 .playerCardOneLeft {
     position: relative;
-    bottom: 98px; 
-    left: 15px; 
+    bottom: 69px;
+    left: 13px;
 }
+
 
 /* CARD 2 NUMBERS  */
 .playerTopNumCard2 {
-    position: relative; 
-    margin: auto; 
-    top: 10px;
+    position: relative;
+    margin: auto;
+    top: 8px;
     left: 30px;
 }
 .playerBottomNumCard2 {
@@ -405,34 +405,34 @@ img {
 
 .playerLeftNumCard2 {
     position: relative;
-    bottom: 98px; 
-    left: 15px; 
+    bottom: 67px;
+    left: 13px;
 }
 .playerRightNumCard2 {
-    position: relative; 
-    bottom: 170px; 
-    left: 45px;
+    position: relative;
+    bottom: 115px;
+    left: 46px;
 }
 /* CARD 3 NUMBERS */
 .playerTopNumCard3 {
-    position: relative; 
-    margin: auto; 
-    top: 10px;
+    position: relative;
+    margin: auto;
+    top: 11px;
     left: 30px;
 }
 .playerBottomNumCard3 {
     position: relative; 
-    left: 30px; 
+    left: 28px; 
 }
 
 .playerLeftNumCard3 {
     position: relative;
-    bottom: 98px; 
-    left: 15px; 
+    bottom: 66px;
+    left: 13px;
 }
 .playerRightNumCard3 {
-    position: relative; 
-    bottom: 170px; 
+    position: relative;
+    bottom: 112px;
     left: 45px;
 }
 
@@ -444,19 +444,20 @@ img {
     left: 30px;
 }
 .playerBottomNumCard4 {
-    position: relative; 
-    left: 30px; 
+    position: relative;
+    left: 17px;
+    bottom: -30px;
 }
 
 .playerLeftNumCard4 {
     position: relative;
-    bottom: 98px; 
-    left: 15px; 
+    bottom: -10px;
+    left: -6px;
 }
 .playerRightNumCard4 {
-    position: relative; 
-    bottom: 170px; 
-    left: 45px;
+    position: relative;
+    top: 12px;
+    left: 15px;
 }
 
 /* CARD 5 Numbers */
@@ -473,12 +474,12 @@ img {
 
 .playerLeftNumCard5 {
     position: relative;
-    bottom: 98px; 
-    left: 15px; 
+    bottom: 66px;
+    left: 15px;
 }
 .playerRightNumCard5 {
-    position: relative; 
-    bottom: 170px; 
+    position: relative;
+    bottom: 111px;
     left: 45px;
 }
 
