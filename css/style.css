@@ -6,16 +6,19 @@ body, html {
 main { 
     display: flex;  
     flex-direction: column;
-    background-size: cover;
-    margin: 0px; 
+    /* background-size: cover; */
+    /* background: url("../img/board-mat.jpg"); */
+    /* border: 3px solid white; 
+    margin: 0px;  */
     background-position: center;
     background-repeat: no-repeat;
 }
 .game-container{
     display: flex;  
     /* align-self: center; */
-    /* height: 100%; */
     background: url("../img/board-mat.jpg");
+    height: 155vh;
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -23,19 +26,12 @@ main {
 .footer-Container{
     display: flex; 
     flex-direction: row;
-}
-.
-footer { 
-    display: flex; 
-    z-index: 5;  
-    bottom: 0; 
-    width: 100%;
-    height: 2.5rem; 
-    background-color: black;
+    background-color: aliceblue; 
 }
 header {
     display: flex; 
-    height: 3em; 
+    height: 3em;
+    background-color: aliceblue; 
 }
 audio { 
     opacity: 50%; 
@@ -147,10 +143,10 @@ text-align: justify;
 }
 
 img { 
-    display: flex; 
+    /* display: flex; 
     background-size: cover; 
     flex-grow: inherit;
-    height: 100%;
+    height: 100%; */
 }
 
 #playerScore { 
@@ -184,6 +180,7 @@ img {
 .boardGrid-Container { 
     width: 54%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 /* BOARD ELEMENTS  */
@@ -218,7 +215,7 @@ img {
 
 #playerDrawnCards { 
     cursor: pointer;
-    width: 23%;
+    width: 13%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -226,7 +223,7 @@ img {
 
 #computerDrawnCards { 
     cursor: pointer;
-    width: 23%;
+    width: 13%;
     display: flex;
     flex-direction: column;
     align-items: center; 
@@ -255,12 +252,21 @@ img {
     cursor: pointer; 
 }
 
-#playerChosenCard { 
-    background: fill;
+.chosenPlayerCard-Container { 
+    display: flex;
+    background-color: antiquewhite;
+    flex-direction: column;
+    align-self: center;
     opacity: .75; 
-    height: 200px;
-    width: 180px;
-    cursor: pointer; 
+    width: 11%;
+}
+.chosenCPUCard-Container { 
+    display: flex;
+    background-color: antiquewhite;
+    flex-direction: column;
+    align-self: center;
+    opacity: .75; 
+    width: 11%;
 }
 
 #playerCardOne {
@@ -361,10 +367,8 @@ img {
 }
 
 #compChosenCard { 
-    background: fill; 
-    opacity: .75; 
-    height: 250px;
-    width: 250px; 
+     background: fill; 
+     opacity: .75; 
 }
 
 

@@ -31,9 +31,16 @@
         <main>
      
                 <section class="game-container">
-                        <!-- PLAYER DRAWN CARDS -->
-                        <article id = 'playerDrawnCards'> 
-                                       <!--CARD 1  -->
+                               <!-- CHOSEN CARDS  -->
+                <article class="chosenCard-Container"> 
+                        <div>
+                                <div id = 'playerChosenCard'></div>
+                        </div>
+                        <div>
+                                <div id = 'compChosenCard'></div>
+                        </div>
+                </article>
+                        <article id = 'playerDrawnCards'>        
                                 <div class = "playerCards" id = 'playerCardOne'>
                                         <div>
                                                 <h1 class = 'playerCardOneTop'></h1>
@@ -48,7 +55,7 @@
                                                 <h1 class = 'playerCardOneRight'></h1>
                                         </div>
                                 </div>
-                                <!-- CARD 2 -->
+                                
                                 <div class = "playerCards" id = 'playerCardTwo'>
                                         <div>
                                                 <h1 class = 'playerTopNumCard2'></h1>
@@ -63,7 +70,7 @@
                                                 <h1 class = 'playerRightNumCard2'></h1>
                                         </div>
                                 </div>
-                                <!-- CARD 3 -->
+                                
                                 <div class = "playerCards" id = 'playerCardThree'>
                                         <div>
                                                 <h1 class = 'playerTopNumCard3'></h1>
@@ -78,7 +85,7 @@
                                                 <h1 class = 'playerRightNumCard3'></h1>
                                         </div>
                                 </div>
-                                <!-- CARD 4 -->
+                                
                                 <div class = "playerCards" id = 'playerCardFour'>
                                         <div>
                                                 <h1 class = 'playerTopNumCard4'></h1>
@@ -93,7 +100,7 @@
                                                 <h1 class = 'playerRightNumCard4'></h1>
                                         </div>
                                 </div>
-                                <!-- CARD 5 -->
+                                
                                 <div class = "playerCards" id = 'playerCardFive'>
                                         <div>
                                                 <h1 class = 'playerTopNumCard5'></h1>
@@ -109,14 +116,6 @@
                                         </div>
                                 </div>
                         </article>
-
-                        <!-- PLAYER CHOSEN CARD  -->
-                        <article class="chosenPlayerCard-Container"> 
-                                <div>
-                                        <div id = 'playerChosenCard'></div>
-                                </div>
-                        </article>
-                        <!-- BOARD MAT -->
                         <article class="boardGrid-Container">
                                 <div id = 'boardGrid'>
                                         <div class = "row">
@@ -136,16 +135,8 @@
                                         </div>
                                 </div>
                         </article>                
-
-                        <!-- COMPUTER CHOSEN CARD -->
-                        <article class="chosenCPUCard-Container">
-                                <div>
-                                        <div id = 'compChosenCard'></div>
-                                </div>
-                        </article>
-                        <!-- COMPUTER DRAWN CARDS -->
-                        <article id = 'computerDrawnCards'>   
-                                          <!-- CARD 1  -->
+                        <!-- COMPUTER CARD NUMBERS -->
+                        <article id = 'computerDrawnCards'>             
                                 <div class = "compCards" id = 'compCardOne'>
                                         <div>
                                                 <h1 class = 'compTopNum'></h1>
@@ -160,7 +151,7 @@
                                                 <h1 class = 'compRightNum'></h1>
                                         </div>
                                 </div>
-                                <!-- CARD 2 -->
+                                
                                 <div class = "compCards" id = 'compCardTwo'>
                                         <div>
                                                 <h1 class = 'compTopNumCard2'></h1>
@@ -175,7 +166,7 @@
                                                 <h1 class = 'compRightNumCard2'></h1>
                                         </div>
                                 </div>
-                                <!-- CARD 3 -->
+                                
                                 <div class = "compCards" id = 'compCardThree'>
                                         <div>
                                                 <h1 class = 'compTopNumCard3'></h1>
@@ -190,7 +181,7 @@
                                                 <h1 class = 'compRightNumCard3'></h1>
                                         </div>
                                 </div>
-                                <!-- CARD 4 -->
+                                
                                 <div class = "compCards" id = 'compCardFour'>
                                         <div>
                                                 <h1 class = 'compTopNumCard4'></h1>
@@ -205,7 +196,7 @@
                                                 <h1 class = 'compRightNumCard4'></h1>
                                         </div>
                                 </div>
-                                <!-- CARD 5 -->
+                                
                                 <div class = "compCards" id = 'compCardFive'>
                                         <div>
                                                 <h1 class = 'compTopNumCard5'></h1>
@@ -221,7 +212,6 @@
                                         </div>
                                 </div>
                         </article>
-                      
                 </section>    
         </main>                   
         <footer class="footer-Container">
