@@ -498,13 +498,13 @@ img {
 }
 .compLeftNum {
     position: relative;
-    bottom: 98px; 
-    left: 15px; 
+    bottom: 64px;
+    left: 13px;
 }
 .compRightNum {
-   position: relative; 
-    bottom: 170px; 
-    left: 45px;
+    position: relative;
+    bottom: 113px;
+    left: 47px;
 }
 /* computer Card 2 Numbers */
 .compTopNumCard2 {
@@ -519,12 +519,12 @@ img {
 }
 .compLeftNumCard2 {
     position: relative;
-    bottom: 98px; 
-    left: 15px; 
+    bottom: 66px;
+    left: 14px;
 }
 .compRightNumCard2 {
-    position: relative; 
-    bottom: 170px; 
+    position: relative;
+    bottom: 112px;
     left: 45px;
 }
 /* computer card 3 numbers */
@@ -540,13 +540,13 @@ img {
 }
 .compLeftNumCard3 {
     position: relative;
-    bottom: 98px; 
-    left: 15px; 
+    bottom: 65px;
+    left: 12px;
 }
 .compRightNumCard3 {
-    position: relative; 
-    bottom: 170px; 
-    left: 45px;
+    position: relative;
+    bottom: 111px;
+    left: 49px;
 }
 /* computer card 4 numbers */
 .compTopNumCard4 {
@@ -557,17 +557,18 @@ img {
 }
 .compBottomNumCard4 {
     position: relative; 
-    left: 30px; 
+    top: 26px; 
+    left: 20px; 
 }
 .compLeftNumCard4 {
     position: relative;
-    bottom: 98px; 
-    left: 15px; 
+    top: 8px; 
+    left: -4px; 
 }
 .compRightNumCard4 {
-    position: relative; 
-    bottom: 170px; 
-    left: 45px;
+    position: relative;
+    top: 8px;
+    left: 13px;
 }
 
 /* computer card 5 numbers */
@@ -583,13 +584,13 @@ img {
 }
 .compLeftNumCard5 {
     position: relative;
-    bottom: 98px; 
-    left: 15px; 
+    bottom: 67px;
+    left: 13px;
 }
 .compRightNumCard5 {
-    position: relative; 
-    bottom: 170px; 
-    left: 45px;
+    position: relative;
+    bottom: 114px;
+    left: 44px;
 }
 h1 {
     -webkit-text-stroke: 1px white; 
