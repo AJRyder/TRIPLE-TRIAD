@@ -187,17 +187,19 @@ img {
 }
 /* BOARD ELEMENTS  */
 #boardGrid { 
-    display: flex; 
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
     position: relative;
-    height: 100%;
-    width: 800px;  
+    height: 86%;
+    width: 1100px;
+    top: 6em;
+}
 }
 .boardTiles { 
     display: flex;
     background-color: yellow;
-    opacity: .3; 
+    /* opacity: .3;  */
     align-items: center;
     flex: 0 0 32%; 
     margin-bottom: 5px; 
@@ -215,10 +217,11 @@ img {
 }
 
 #playerDrawnCards { 
+    display: flex;
+    height: 100%; 
+    flex-direction: column;
     cursor: pointer;
     width: 23%;
-    display: flex;
-    flex-direction: column;
     align-items: center;
 }
 
@@ -242,21 +245,24 @@ img {
 } */
 
 .playerCards {
-    background-size: 100%;
-    display: block; 
-    height: 200px;
-    width: 190px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: block;
+    overflow: hidden;
+    margin-right: 10px;
+    height: 252px;
+    width: 252px;
     background-color: mediumturquoise;
-    font-family: fantasy; 
+    font-family: fantasy;
     font-weight: 2;
     color: whitesmoke;
-    cursor: pointer; 
+    cursor: pointer;
 }
 #playerChosenCard { 
     display: flex; 
     flex-direction: column;
     background: fill;
-    opacity: .75; 
+    /* opacity: .75;  */
     height: 200px;
     width: 180px;
     cursor: pointer; 
@@ -295,15 +301,18 @@ img {
     z-index: 5; 
 }
 .compCards {
-    background-size: 100%;
-    display: block; 
-    height:200px;
-    width: 190px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: block;
+    overflow: hidden;
+    margin-right: 10px;
+    height: 252px;
+    width: 252px;
     background-color: palevioletred;
-    font-family: fantasy; 
+    font-family: fantasy;
     font-weight: 2;
     color: whitesmoke;
-    cursor: pointer; 
+    cursor: pointer;
 }
 #compCardOne {
     position: relative; 
@@ -361,7 +370,7 @@ img {
 
 #compChosenCard { 
     background: fill; 
-    opacity: .75; 
+    /* opacity: .75;  */
     height: 250px;
     width: 250px; 
 }
